@@ -25,14 +25,13 @@ public class UserController {
     @Autowired
     private UsersService userService;
 
-    public UsersService getUserService() {
-        return userService;
-    }
+//    public UsersService getUserService() {
+//        return this.userService = userService;
+//    }
 
-    public void setUserService(UsersService userService) {
-        this.userService = userService;
-    }
-
+//    public void setUserService(UsersService userService) {
+//        this.userService = userService;
+//    }
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "name") String name, @RequestParam(value = "age") String age) {
@@ -69,7 +68,7 @@ public class UserController {
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Users> listAll() {
-        
+
         return userService.listAllUsers();
 
     }

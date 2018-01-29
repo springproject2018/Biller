@@ -67,9 +67,9 @@
     <beans:bean id="userDAO" class="com.mycompany.biller.DAOImpl.UserDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
-    <beans:bean id="userService" class="com.mycompany.biller.serviceImpl.UserServiceImpl">
+<!--    <beans:bean id="userService" class="com.mycompany.biller.serviceImpl.UserServiceImpl">
         <beans:property name="userDAO" ref="userDAO"></beans:property>
-    </beans:bean>
+    </beans:bean>-->
     
     
     
