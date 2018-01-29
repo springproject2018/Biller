@@ -8,7 +8,7 @@
     <packaging>war</packaging>
 
     <name>Biller</name>
-<!--ahmad alajarmeh ggg قلاشلاش-->
+<!--ahmad alajarmeh ggg فشت قشسنقلاشلاش-->
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
