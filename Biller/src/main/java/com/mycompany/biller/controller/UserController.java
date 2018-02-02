@@ -36,10 +36,10 @@ public class UserController {
     public @ResponseBody
     String add(@RequestParam(value = "name") String name, @RequestParam(value = "age") String age) {
         System.out.println("adeed");
-        Users user = new Users();
-        user.setAge(age);
-        user.setName(name);
-        userService.addUsers(user);
+//        Users user = new Users();
+//        user.setAge(age);
+//        user.setName(name);
+//        userService.addUsers(user);
         return "OK";
     }
 
@@ -47,11 +47,11 @@ public class UserController {
     public @ResponseBody
     String update(@RequestParam(value = "userId") int userId, @RequestParam(value = "name") String name, @RequestParam(value = "age") String age) {
         System.out.println("updated");
-        Users user = new Users();
-        user.setUserId(userId);
-        user.setAge(age);
-        user.setName(name);
-        userService.updateUsers(user);
+//        Users user = new Users();
+//        user.setUserId(userId);
+//        user.setAge(age);
+//        user.setName(name);
+//        userService.updateUsers(user);
 
         return "OK";
     }

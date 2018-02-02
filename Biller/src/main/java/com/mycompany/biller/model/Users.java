@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -24,12 +27,6 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID")
     private int userId;
-    
-     @Column(name = "USER_NAME")
-    private String name;
-    
-     @Column(name = "USER_AGE")
-    private String age;
 
     public int getUserId() {
         return userId;
@@ -39,26 +36,56 @@ public class Users {
         this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Party getParty() {
+        return party;
+    }
+
+    public void setParty(Party party) {
+        this.party = party;
     }
 
     @Override
     public String toString() {
-        return "Users{" + "userId=" + userId + ", name=" + name + ", age=" + age + '}';
+        return "Users{" + "userId=" + userId + ", userName=" + userName + ", password=" + password + ", active=" + active + ", party=" + party + '}';
     }
+    
+    
+    @Column(name="USER_NAME")
+    private String userName;
+    
+    @Column(name="PASSWORD")
+    private String password;
+    
+    @Column(name="ACTIVE")
+    private boolean active;
+    
+    @OneToOne()
+    private Party party;
+    
     
     
 }
