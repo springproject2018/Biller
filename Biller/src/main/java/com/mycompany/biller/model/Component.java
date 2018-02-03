@@ -20,20 +20,17 @@ import javax.persistence.Table;
 public class Component {
     @Id
     @Column(name = "COMPONENT_ID")
-    private String roleId;
+    private String componentId;
 
-    public String getRoleId() {
-        return roleId;
+    public String getComponentId() {
+        return componentId;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setComponentId(String componentId) {
+        this.componentId = componentId;
     }
 
-    @Override
-    public String toString() {
-        return "Component{" + "roleId=" + roleId + ", description=" + description + '}';
-    }
+  
 
     public int getDescription() {
         return description;
@@ -45,4 +42,12 @@ public class Component {
     
     @Column(name = "DESCRIPTIN")
     private int description;
+
+    @Override
+    public String toString() {
+        return "Component{" + "componentId=" + componentId + ", description=" + description + '}';
+    }
+    
+    
+    
 }

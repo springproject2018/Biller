@@ -5,6 +5,7 @@
  */
 package com.mycompany.biller.controller;
 
+import com.mycompany.biller.model.Party;
 import com.mycompany.biller.model.Users;
 import com.mycompany.biller.service.UsersService;
 import java.util.List;
@@ -20,43 +21,47 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Admin
  */
 @RestController
+@RequestMapping(value = "/users")
 public class UserController {
 
     @Autowired
     private UsersService userService;
 
-//    public UsersService getUserService() {
-//        return this.userService = userService;
-//    }
-
-//    public void setUserService(UsersService userService) {
-//        this.userService = userService;
-//    }
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "name") String name, @RequestParam(value = "age") String age) {
+    String add(@RequestParam(value = "userName") String name, @RequestParam(value = "password") String password, @RequestParam(value = "active") boolean active, @RequestParam(value = "party") String partyID) {
         System.out.println("adeed");
-//        Users user = new Users();
-//        user.setAge(age);
-//        user.setName(name);
-//        userService.addUsers(user);
+
+        Party party = new Party();
+        party.setPartyId(partyID);
+
+        Users user = new Users();
+        user.setUserName(name);
+        user.setPassword(password);
+        user.setActive(active);
+        user.setParty(party);
+        userService.addUsers(user);
         return "OK";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "userId") int userId, @RequestParam(value = "name") String name, @RequestParam(value = "age") String age) {
+    String update(@RequestParam(value = "userId") int userId, @RequestParam(value = "userName") String name, @RequestParam(value = "password") String password, @RequestParam(value = "active") boolean active, @RequestParam(value = "party") String partyID) {
         System.out.println("updated");
-//        Users user = new Users();
-//        user.setUserId(userId);
-//        user.setAge(age);
-//        user.setName(name);
-//        userService.updateUsers(user);
+        Party party = new Party();
+        party.setPartyId(partyID);
+
+        Users user = new Users();
+        user.setUserName(name);
+        user.setPassword(password);
+        user.setActive(active);
+        user.setParty(party);
+        userService.updateUsers(user);
 
         return "OK";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "userId") int userId) {
         System.out.println("deleted");
@@ -65,7 +70,7 @@ public class UserController {
         return "OK";
     }
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/findAllUsers", method = RequestMethod.GET)
     @ResponseBody
     public List<Users> listAll() {
 
@@ -73,7 +78,7 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/findById", method = RequestMethod.GET)
+    @RequestMapping(value = "/findUserById", method = RequestMethod.GET)
     @ResponseBody
     public List<Users> findById(@RequestParam(value = "userId") int userId) {
         return userService.findById(userId);
