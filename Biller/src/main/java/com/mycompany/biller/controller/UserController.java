@@ -6,7 +6,7 @@
 package com.mycompany.biller.controller;
 
 import com.mycompany.biller.model.Party;
-import com.mycompany.biller.model.Users;
+import com.mycompany.biller.model.UserLogin;
 import com.mycompany.biller.service.UsersService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class UserController {
         Party party = new Party();
         party.setPartyId(partyID);
 
-        Users user = new Users();
+        UserLogin user = new UserLogin();
         user.setUserName(name);
         user.setPassword(password);
         user.setActive(active);
@@ -51,7 +51,7 @@ public class UserController {
         Party party = new Party();
         party.setPartyId(partyID);
 
-        Users user = new Users();
+        UserLogin user = new UserLogin();
         user.setUserName(name);
         user.setPassword(password);
         user.setActive(active);
@@ -72,7 +72,7 @@ public class UserController {
 
     @RequestMapping(value = "/findAllUsers", method = RequestMethod.GET)
     @ResponseBody
-    public List<Users> listAll() {
+    public List<UserLogin> listAll() {
 
         return userService.listAllUsers();
 
@@ -80,7 +80,7 @@ public class UserController {
 
     @RequestMapping(value = "/findUserById", method = RequestMethod.GET)
     @ResponseBody
-    public List<Users> findById(@RequestParam(value = "userId") int userId) {
+    public List<UserLogin> findById(@RequestParam(value = "userId") int userId) {
         return userService.findById(userId);
 
     }

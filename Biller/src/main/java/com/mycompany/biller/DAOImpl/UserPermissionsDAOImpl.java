@@ -7,7 +7,7 @@ package com.mycompany.biller.DAOImpl;
 
 import com.mycompany.biller.DAO.*;
 import com.mycompany.biller.model.UserPermissions;
-import com.mycompany.biller.model.Users;
+import com.mycompany.biller.model.UserLogin;
 import java.util.List;
 
 /**

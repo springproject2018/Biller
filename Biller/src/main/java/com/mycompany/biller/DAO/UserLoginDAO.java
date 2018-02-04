@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.biller.service;
+package com.mycompany.biller.DAO;
 
 import com.mycompany.biller.model.UserLogin;
 import java.util.List;
@@ -12,16 +12,16 @@ import java.util.List;
  *
  * @author Admin
  */
-public interface UsersService {
-    
-    public void addUsers(UserLogin u);
+public interface UserLoginDAO {
 
-    public void updateUsers(UserLogin u);
+    public void addUserLogin(UserLogin u);
 
-    public void deleteUsers(int id);
+    public void updateUserLogin(UserLogin u);
 
-    public List<UserLogin> listAllUsers();
+    public void deleteUserLogin(int id);
+
+    public List<UserLogin> listAllUserLogin();
 
     public List<UserLogin> findById(int id);
-    
+
 }

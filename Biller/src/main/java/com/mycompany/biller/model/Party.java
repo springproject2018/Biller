@@ -7,9 +7,8 @@ package com.mycompany.biller.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,17 +18,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PARTY")
 public class Party {
+
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PARTY_ID")
     private String partyId;
-    
-    
-    @Column(name="FIRST_NAME")
-    private String firstName;
-    
-    @Column(name="LAST_NAME")
-    private String lastName;
+
+    @OneToOne
+    private Person person;
+
+    @OneToOne
+    private PartyType partyType;
+
+    @OneToOne
+    private Company company;
 
     public String getPartyId() {
         return partyId;
@@ -39,21 +41,35 @@ public class Party {
         this.partyId = partyId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
-    public String getLastName() {
-        return lastName;
+    public PartyType getPartyType() {
+        return partyType;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPartyType(PartyType partyType) {
+        this.partyType = partyType;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "Party{" + "partyId=" + partyId + ", person=" + person + ", partyType=" + partyType + ", company=" + company + '}';
     }
     
     
+
 }

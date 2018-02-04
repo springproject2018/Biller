@@ -20,7 +20,7 @@ public interface ComponentDAO {
 
     public void deleteComponent(String componentId);
 
-    public List<Component> listAllUsers();
+    public List<Component> listAllComponent();
 
     public List<Component> findById(String componentId);
 }

@@ -5,13 +5,13 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.DAO.UserDAO;
-import com.mycompany.biller.model.Users;
+import com.mycompany.biller.model.UserLogin;
 import com.mycompany.biller.service.UsersService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.mycompany.biller.DAO.UserLoginDAO;
 
 /**
  *
@@ -25,19 +25,19 @@ public class UserServiceImpl implements UsersService {
     
 
     @Autowired
-    private UserDAO userDAO;
+    private UserLoginDAO userDAO;
 
-    public void setUserDAO(UserDAO userDAO) {
+    public void setUserDAO(UserLoginDAO userDAO) {
         this.userDAO = userDAO;
     }
 
     @Override
-    public void addUsers(Users u) {
+    public void addUsers(UserLogin u) {
         userDAO.addUsers(u);
     }
 
     @Override
-    public void updateUsers(Users u) {
+    public void updateUsers(UserLogin u) {
         userDAO.updateUsers(u);
     }
 
@@ -48,12 +48,12 @@ public class UserServiceImpl implements UsersService {
     }
 
     @Override
-    public List<Users> listAllUsers() {
+    public List<UserLogin> listAllUsers() {
        return userDAO.listAllUsers();
     }
 
     @Override
-    public List<Users> findById(int id) {
+    public List<UserLogin> findById(int id) {
         return userDAO.findById(id);
     }
 

@@ -5,20 +5,20 @@
  */
 package com.mycompany.biller.DAOImpl;
 
-import com.mycompany.biller.DAO.UserDAO;
-import com.mycompany.biller.model.Users;
+import com.mycompany.biller.model.UserLogin;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.mycompany.biller.DAO.UserLoginDAO;
 
 /**
  *
  * @author Admin
  */
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl implements UserLoginDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -28,13 +28,13 @@ public class UserDAOImpl implements UserDAO {
 //    }
 
     @Override
-    public void addUsers(Users u) {
+    public void addUsers(UserLogin u) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(u);
     }
 
     @Override
-    public void updateUsers(Users u) {
+    public void updateUsers(UserLogin u) {
         Session session = sessionFactory.getCurrentSession();
         session.update(u);
     }
@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void deleteUsers(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Users u = (Users) session.load(Users.class, new Integer(id));
+        UserLogin u = (UserLogin) session.load(UserLogin.class, new Integer(id));
         if (u != null) {
             session.delete(u);
         }
@@ -50,14 +50,14 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Users> listAllUsers() {
+    public List<UserLogin> listAllUsers() {
         Session session = sessionFactory.getCurrentSession();
-        List<Users> personList = session.createQuery("from Users").list();
+        List<UserLogin> personList = session.createQuery("from Users").list();
         return   personList;
     }
 
     @Override
-    public List<Users> findById(int id) {
+    public List<UserLogin> findById(int id) {
         String selectQuery = "FROM Users WHERE user_id = :id";
         return sessionFactory
                 .getCurrentSession()

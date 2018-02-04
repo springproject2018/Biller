@@ -5,7 +5,6 @@
  */
 package com.mycompany.biller.DAO;
 
-import com.mycompany.biller.model.Menus;
 import com.mycompany.biller.model.Party;
 import java.util.List;
 

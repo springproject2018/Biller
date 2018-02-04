@@ -5,11 +5,7 @@
  */
 package com.mycompany.biller.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -18,16 +14,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "MENUS")
-public class Menus {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private int id;
-    
-    
-    
-
+@Table(name = "ROLE_GROUP")
+public class RoleGroup {
     
 }

@@ -14,13 +14,21 @@ import javax.persistence.Table;
  *
  * @author ismail
  */
-
 @Entity
 @Table(name = "COMPONENT")
 public class Component {
+
     @Id
     @Column(name = "COMPONENT_ID")
     private String componentId;
+
+    @Column(name = "DESCRIPTIN")
+    private int description;
+
+    @Override
+    public String toString() {
+        return "Component{" + "componentId=" + componentId + ", description=" + description + '}';
+    }
 
     public String getComponentId() {
         return componentId;
@@ -30,8 +38,6 @@ public class Component {
         this.componentId = componentId;
     }
 
-  
-
     public int getDescription() {
         return description;
     }
@@ -39,15 +45,5 @@ public class Component {
     public void setDescription(int description) {
         this.description = description;
     }
-    
-    @Column(name = "DESCRIPTIN")
-    private int description;
 
-    @Override
-    public String toString() {
-        return "Component{" + "componentId=" + componentId + ", description=" + description + '}';
-    }
-    
-    
-    
 }

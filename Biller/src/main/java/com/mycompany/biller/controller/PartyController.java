@@ -6,7 +6,7 @@
 package com.mycompany.biller.controller;
 
 import com.mycompany.biller.model.Party;
-import com.mycompany.biller.model.Users;
+import com.mycompany.biller.model.UserLogin;
 import com.mycompany.biller.service.PartyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,7 +6,7 @@
 package com.mycompany.biller.service;
 
 import com.mycompany.biller.model.Party;
-import com.mycompany.biller.model.Users;
+import com.mycompany.biller.model.UserLogin;
 import java.util.List;
 
 /**

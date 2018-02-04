@@ -20,20 +20,32 @@ import javax.persistence.Table;
  * @author Admin
  */
 @Entity
-@Table(name = "USERS")
-public class Users {
+@Table(name = "USER_LOGIN")
+public class UserLogin {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID")
-    private int userId;
+    @Column(name = "USER_LOGIN")
+    private int userLoginId;
 
-    public int getUserId() {
-        return userId;
+    @Column(name="USER_NAME")
+    private String userName;
+    
+    @Column(name="PASSWORD")
+    private String password;
+    
+    @Column(name="ACTIVE")
+    private boolean active;
+    
+    @OneToOne()
+    private Party party;
+
+    public int getUserLoginId() {
+        return userLoginId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserLoginId(int userLoginId) {
+        this.userLoginId = userLoginId;
     }
 
     public String getUserName() {
@@ -70,21 +82,10 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" + "userId=" + userId + ", userName=" + userName + ", password=" + password + ", active=" + active + ", party=" + party + '}';
+        return "UserLogin{" + "userLoginId=" + userLoginId + ", userName=" + userName + ", password=" + password + ", active=" + active + ", party=" + party + '}';
     }
     
     
-    @Column(name="USER_NAME")
-    private String userName;
-    
-    @Column(name="PASSWORD")
-    private String password;
-    
-    @Column(name="ACTIVE")
-    private boolean active;
-    
-    @OneToOne()
-    private Party party;
     
     
     
