@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -22,22 +23,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USER_LOGIN")
 public class UserLogin {
-    
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_LOGIN")
+    @Column(name = "USER_LOGIN_ID")
     private int userLoginId;
 
-    @Column(name="USER_NAME")
+    @Column(name = "USER_NAME")
     private String userName;
-    
-    @Column(name="PASSWORD")
+
+    @Column(name = "PASSWORD")
     private String password;
-    
-    @Column(name="ACTIVE")
-    private boolean active;
-    
-    @OneToOne()
+
+    @Column(name = "PASSWORD_HINT")
+    private String passwordHint;
+
+    @Column(name = "ENABLED")
+    private char enabled; // Y or N
+
+    @ManyToOne
     private Party party;
 
     public int getUserLoginId() {
@@ -64,12 +68,20 @@ public class UserLogin {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getPasswordHint() {
+        return passwordHint;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setPasswordHint(String passwordHint) {
+        this.passwordHint = passwordHint;
+    }
+
+    public char getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(char enabled) {
+        this.enabled = enabled;
     }
 
     public Party getParty() {
@@ -82,11 +94,7 @@ public class UserLogin {
 
     @Override
     public String toString() {
-        return "UserLogin{" + "userLoginId=" + userLoginId + ", userName=" + userName + ", password=" + password + ", active=" + active + ", party=" + party + '}';
+        return "UserLogin{" + "userLoginId=" + userLoginId + ", userName=" + userName + ", password=" + password + ", passwordHint=" + passwordHint + ", enabled=" + enabled + ", party=" + party + '}';
     }
-    
-    
-    
-    
-    
+
 }

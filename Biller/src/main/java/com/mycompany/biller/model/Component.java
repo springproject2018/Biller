@@ -7,6 +7,8 @@ package com.mycompany.biller.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,30 +21,31 @@ import javax.persistence.Table;
 public class Component {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "COMPONENT_ID")
-    private String componentId;
+    private int componentId;
 
     @Column(name = "DESCRIPTIN")
-    private int description;
+    private String description;
 
     @Override
     public String toString() {
         return "Component{" + "componentId=" + componentId + ", description=" + description + '}';
     }
 
-    public String getComponentId() {
+    public int getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(String componentId) {
+    public void setComponentId(int componentId) {
         this.componentId = componentId;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(int description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

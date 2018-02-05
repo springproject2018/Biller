@@ -7,7 +7,10 @@ package com.mycompany.biller.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,20 +20,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "COMPANY")
 public class Company {
- 
+
     @Id
     @Column(name = "COMPANY_ID")
-    private String companyId;
-    
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int companyId;
+
     @Column(name = "NAME")
     private String name;
 
-    public String getCompanyId() {
+    @OneToOne
+    private Party Party;
+
+    public int getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
+    public void setCompanyId(int companyId) {
         this.companyId = companyId;
+    }
+
+    public Party getParty() {
+        return Party;
+    }
+
+    public void setParty(Party Party) {
+        this.Party = Party;
     }
 
     public String getName() {
@@ -43,10 +58,9 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" + "companyId=" + companyId + ", name=" + name + '}';
+        return "Company{" + "companyId=" + companyId + ", name=" + name + ", Party=" + Party + '}';
     }
 
-  
-    
-    
+
+
 }

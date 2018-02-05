@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,22 +22,36 @@ import javax.persistence.Table;
 public class Person {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "PERSON_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int personId;
 
     @Column(name = "FISRT_NAME")
     private String fisrtName;
-    
+
+    @Column(name = "MIDDLE_NAME")
+    private String middleName;
+
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    public int getId() {
-        return id;
+    @Column(name = "GENDER")
+    private char gender;
+
+    @OneToOne
+    private Party Party;
+
+    @Override
+    public String toString() {
+        return "Person{" + "personId=" + personId + ", fisrtName=" + fisrtName + ", middleName=" + middleName + ", lastName=" + lastName + ", gender=" + gender + ", Party=" + Party + '}';
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getFisrtName() {
@@ -47,6 +62,14 @@ public class Person {
         this.fisrtName = fisrtName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -54,7 +77,21 @@ public class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public Party getParty() {
+        return Party;
+    }
+
+    public void setParty(Party Party) {
+        this.Party = Party;
+    }
 
 }

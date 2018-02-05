@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,22 +21,39 @@ import javax.persistence.Table;
 @Table(name = "USER_ROLE")
 public class UserRole {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private String ID;
+    @Column(name = "USER_ROLE_ID")
+    private int userRoleId;
 
-    @Id
+    @Column(name = "DESCRIPTIN")
+    private String description;
+
+    @ManyToOne
     private UserLogin userLogin;
-    
-    @Id
+
+    @ManyToOne
     private RoleGroup roleGroup;
 
-    public String getID() {
-        return ID;
+    public int getUserRoleId() {
+        return userRoleId;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    @Override
+    public String toString() {
+        return "UserRole{" + "userRoleId=" + userRoleId + ", description=" + description + ", userLogin=" + userLogin + ", roleGroup=" + roleGroup + '}';
+    }
+
+    public void setUserRoleId(int userRoleId) {
+        this.userRoleId = userRoleId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public UserLogin getUserLogin() {
@@ -54,12 +72,6 @@ public class UserRole {
         this.roleGroup = roleGroup;
     }
 
-    @Override
-    public String toString() {
-        return "UserRole{" + "ID=" + ID + ", userLogin=" + userLogin + ", roleGroup=" + roleGroup + '}';
-    }
-    
-    
-    
+
 
 }

@@ -32,13 +32,14 @@ public class ComponentDAOImpl implements ComponentDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
     @Override
-    public List<Component> listAllUsers() {
+    public List<Component> findById(String componentId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Component> findById(String componentId) {
+    public List<Component> listAllComponent() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

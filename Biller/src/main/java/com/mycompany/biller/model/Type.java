@@ -10,39 +10,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
  *
- * @author Admin
+ * @author DELL
  */
 @Entity
-@Table(name = "MENUS")
-public class Menus {
+@Table(name = "TYPE")
+public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "MENUS_ID")
-    private int menusId;
+    @Column(name = "TYPE_ID")
+    private int typeID;
 
     @Column(name = "DESCRIPTIN")
     private String description;
-    
-    @ManyToOne
-    private Component component;
 
-    @Override
-    public String toString() {
-        return "Menus{" + "menusId=" + menusId + ", description=" + description + ", component=" + component + '}';
+    public int getTypeID() {
+        return typeID;
     }
 
-    public int getId() {
-        return menusId;
-    }
-
-    public void setId(int menusId) {
-        this.menusId = menusId;
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
     }
 
     public String getDescription() {
@@ -53,12 +44,11 @@ public class Menus {
         this.description = description;
     }
 
-    public Component getComponent() {
-        return component;
+    @Override
+    public String toString() {
+        return "Type{" + "typeID=" + typeID + ", description=" + description + '}';
     }
 
-    public void setComponent(Component component) {
-        this.component = component;
-    }
+
 
 }

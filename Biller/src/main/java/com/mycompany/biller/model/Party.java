@@ -8,6 +8,7 @@ package com.mycompany.biller.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,18 +21,14 @@ import javax.persistence.Table;
 public class Party {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PARTY_ID")
     private String partyId;
 
-    @OneToOne
-    private Person person;
+    @Column(name = "DESCRIPTIN")
+    private String description;
 
-    @OneToOne
+    @ManyToOne
     private PartyType partyType;
-
-    @OneToOne
-    private Company company;
 
     public String getPartyId() {
         return partyId;
@@ -39,14 +36,6 @@ public class Party {
 
     public void setPartyId(String partyId) {
         this.partyId = partyId;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     public PartyType getPartyType() {
@@ -57,19 +46,9 @@ public class Party {
         this.partyType = partyType;
     }
 
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
     @Override
     public String toString() {
-        return "Party{" + "partyId=" + partyId + ", person=" + person + ", partyType=" + partyType + ", company=" + company + '}';
+        return "Party{" + "partyId=" + partyId + ", description=" + description + ", partyType=" + partyType + '}';
     }
-    
-    
 
 }
