@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface UserLoginDAO {
 
-    public void addUserLogin(UserLogin u);
+    public void addUserLogin(UserLogin userLogin);
 
-    public void updateUserLogin(UserLogin u);
+    public void updateUserLogin(UserLogin userLogin);
 
     public void deleteUserLogin(int id);
 

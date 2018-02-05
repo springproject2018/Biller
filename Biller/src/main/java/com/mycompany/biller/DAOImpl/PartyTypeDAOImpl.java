@@ -6,8 +6,8 @@
 package com.mycompany.biller.DAOImpl;
 
 import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Component;
+import com.mycompany.biller.model.Party;
+import com.mycompany.biller.model.PartyType;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,48 +18,49 @@ import org.springframework.stereotype.Repository;
  *
  * @author ismail
  */
+
 @Repository
-public class ComponentDAOImpl implements ComponentDAO {
+public class PartyTypeDAOImpl implements PartyTypeDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void addComponent(Component component) {
+    public void addPartyType(PartyType partyType) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(component);
+        session.persist(partyType);
     }
 
     @Override
-    public void updateComponent(Component component) {
+    public void updatePartyType(PartyType partyType) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(component);
+        session.update(partyType);
     }
 
     @Override
-    public void deleteComponent(int componentId) {
+    public void deletePartyType(int partyTypeId) {
         Session session = sessionFactory.getCurrentSession();
-        Component component = (Component) session.load(Component.class, new Integer(componentId));
-        if (component != null) {
-            session.delete(component);
+        PartyType partyType = (PartyType) session.load(PartyType.class, new Integer(partyTypeId));
+        if (partyType != null) {
+            session.delete(partyType);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Component> listAllComponent() {
+    public List<PartyType> listAllPartyType() {
         Session session = sessionFactory.getCurrentSession();
-        List<Component> componentList = session.createQuery("from Party").list();
-        return componentList;
+        List<PartyType> partyTypeList = session.createQuery("from PartyType").list();
+        return partyTypeList;
     }
 
     @Override
-    public List<Component> findById(int componentId) {
-        String selectQuery = "FROM Component WHERE COMPONENT_ID = :componentId";
+    public List<PartyType> findById(int partyTypeId) {
+        String selectQuery = "FROM PartyType WHERE PARTY_TYPE_ID = :partyTypeId";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
-                .setParameter("componentId", componentId)
+                .setParameter("partyTypeId", partyTypeId)
                 .list();
     }
 

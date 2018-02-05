@@ -6,24 +6,22 @@
 package com.mycompany.biller.service;
 
 import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Party;
+import com.mycompany.biller.model.Type;
 import java.util.List;
 
 /**
  *
  * @author ismail
  */
-public interface PartyService {
-    
-    public void addParty(Party party);
+public interface TypeService {
 
-    public void updateParty(Party party);
+    public void addType(Type type);
 
-    public void deleteParty(String partyId);
+    public void updateType(Type type);
 
-    public List<Party> listAllParty();
+    public void deleteType(int id);
 
-    public List<Party> findById(String partyId);
-    
-    
+    public List<Type> listAllType();
+
+    public List<Type> findById(int id);
 }

@@ -5,9 +5,8 @@
  */
 package com.mycompany.biller.DAOImpl;
 
-import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Component;
+import com.mycompany.biller.DAO.UserRoleDAO;
+import com.mycompany.biller.model.UserRole;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,47 +18,47 @@ import org.springframework.stereotype.Repository;
  * @author ismail
  */
 @Repository
-public class ComponentDAOImpl implements ComponentDAO {
+public class UserRoleDAOImpl implements UserRoleDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void addComponent(Component component) {
+    public void addUserRole(UserRole userRole) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(component);
+        session.persist(userRole);
     }
 
     @Override
-    public void updateComponent(Component component) {
+    public void updateUserRole(UserRole userRole) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(component);
+        session.update(userRole);
     }
 
     @Override
-    public void deleteComponent(int componentId) {
+    public void deleteUserRole(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Component component = (Component) session.load(Component.class, new Integer(componentId));
-        if (component != null) {
-            session.delete(component);
+        UserRole userRole = (UserRole) session.load(UserRole.class, new Integer(id));
+        if (userRole != null) {
+            session.delete(userRole);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Component> listAllComponent() {
+    public List<UserRole> listAllUserRole() {
         Session session = sessionFactory.getCurrentSession();
-        List<Component> componentList = session.createQuery("from Party").list();
-        return componentList;
+        List<UserRole> userRoleList = session.createQuery("from UserRole").list();
+        return userRoleList;
     }
 
     @Override
-    public List<Component> findById(int componentId) {
-        String selectQuery = "FROM Component WHERE COMPONENT_ID = :componentId";
+    public List<UserRole> findById(int id) {
+        String selectQuery = "FROM UserRole WHERE USER_ROLE_ID = :id";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
-                .setParameter("componentId", componentId)
+                .setParameter("id", id)
                 .list();
     }
 

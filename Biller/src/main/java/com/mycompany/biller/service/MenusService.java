@@ -6,24 +6,23 @@
 package com.mycompany.biller.service;
 
 import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Party;
+import com.mycompany.biller.model.Menus;
 import java.util.List;
 
 /**
  *
  * @author ismail
  */
-public interface PartyService {
-    
-    public void addParty(Party party);
+public interface MenusService {
 
-    public void updateParty(Party party);
+    public void addMenus(Menus menus);
 
-    public void deleteParty(String partyId);
+    public void updateMenus(Menus menus);
 
-    public List<Party> listAllParty();
+    public void deleteMenus(int id);
 
-    public List<Party> findById(String partyId);
-    
-    
+    public List<Menus> listAllMenus();
+
+    public List<Menus> findById(int id);
+
 }

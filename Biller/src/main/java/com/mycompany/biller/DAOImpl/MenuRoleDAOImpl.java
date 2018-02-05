@@ -7,7 +7,8 @@ package com.mycompany.biller.DAOImpl;
 
 import com.mycompany.biller.DAO.*;
 import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Component;
+import com.mycompany.biller.model.MenuRole;
+import com.mycompany.biller.model.Party;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,47 +20,47 @@ import org.springframework.stereotype.Repository;
  * @author ismail
  */
 @Repository
-public class ComponentDAOImpl implements ComponentDAO {
+public class MenuRoleDAOImpl implements MenuRoleDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void addComponent(Component component) {
+    public void addMenuRole(MenuRole menuRole) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(component);
+        session.persist(menuRole);
     }
 
     @Override
-    public void updateComponent(Component component) {
+    public void updateMenuRole(MenuRole menuRole) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(component);
+        session.update(menuRole);
     }
 
     @Override
-    public void deleteComponent(int componentId) {
+    public void deleteMenuRole(int menuRoleId) {
         Session session = sessionFactory.getCurrentSession();
-        Component component = (Component) session.load(Component.class, new Integer(componentId));
-        if (component != null) {
-            session.delete(component);
+        MenuRole menuRole = (MenuRole) session.load(MenuRole.class, new Integer(menuRoleId));
+        if (menuRole != null) {
+            session.delete(menuRole);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Component> listAllComponent() {
+    public List<MenuRole> listAllMenuRole() {
         Session session = sessionFactory.getCurrentSession();
-        List<Component> componentList = session.createQuery("from Party").list();
-        return componentList;
+        List<MenuRole> menuRoleList = session.createQuery("from MenuRole").list();
+        return menuRoleList;
     }
 
     @Override
-    public List<Component> findById(int componentId) {
-        String selectQuery = "FROM Component WHERE COMPONENT_ID = :componentId";
+    public List<MenuRole> findById(int menuRole) {
+        String selectQuery = "FROM MenuRole WHERE MENU_ROLE_ID = :menuRole";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
-                .setParameter("componentId", componentId)
+                .setParameter("menuRole", menuRole)
                 .list();
     }
 

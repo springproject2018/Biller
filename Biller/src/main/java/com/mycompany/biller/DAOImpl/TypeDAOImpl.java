@@ -6,8 +6,8 @@
 package com.mycompany.biller.DAOImpl;
 
 import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Component;
+import com.mycompany.biller.model.RoleGroup;
+import com.mycompany.biller.model.Type;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,48 +18,49 @@ import org.springframework.stereotype.Repository;
  *
  * @author ismail
  */
+
 @Repository
-public class ComponentDAOImpl implements ComponentDAO {
+public class TypeDAOImpl implements TypeDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void addComponent(Component component) {
+    public void addType(Type type) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(component);
+        session.persist(type);
     }
 
     @Override
-    public void updateComponent(Component component) {
+    public void updateType(Type type) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(component);
+        session.update(type);
     }
 
     @Override
-    public void deleteComponent(int componentId) {
+    public void deleteType(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Component component = (Component) session.load(Component.class, new Integer(componentId));
-        if (component != null) {
-            session.delete(component);
+        Type type = (Type) session.load(Type.class, new Integer(id));
+        if (type != null) {
+            session.delete(type);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Component> listAllComponent() {
+    public List<Type> listAllType() {
         Session session = sessionFactory.getCurrentSession();
-        List<Component> componentList = session.createQuery("from Party").list();
-        return componentList;
+        List<Type> TypeList = session.createQuery("from Type").list();
+        return TypeList;
     }
 
     @Override
-    public List<Component> findById(int componentId) {
-        String selectQuery = "FROM Component WHERE COMPONENT_ID = :componentId";
+    public List<Type> findById(int id) {
+        String selectQuery = "FROM Type WHERE TYPE_ID = :id";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
-                .setParameter("componentId", componentId)
+                .setParameter("id", id)
                 .list();
     }
 

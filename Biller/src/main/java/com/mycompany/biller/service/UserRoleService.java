@@ -6,24 +6,22 @@
 package com.mycompany.biller.service;
 
 import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Party;
+import com.mycompany.biller.model.UserRole;
 import java.util.List;
 
 /**
  *
  * @author ismail
  */
-public interface PartyService {
-    
-    public void addParty(Party party);
+public interface UserRoleService {
 
-    public void updateParty(Party party);
+    public void addUserRole(UserRole userRole);
 
-    public void deleteParty(String partyId);
+    public void updateUserRole(UserRole userRole);
 
-    public List<Party> listAllParty();
+    public void deleteUserRole(int id);
 
-    public List<Party> findById(String partyId);
-    
-    
+    public List<UserRole> listAllUserRole();
+
+    public List<UserRole> findById(int id);
 }

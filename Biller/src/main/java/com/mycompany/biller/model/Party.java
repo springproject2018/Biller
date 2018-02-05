@@ -29,6 +29,25 @@ public class Party {
 
     @ManyToOne
     private PartyType partyType;
+    
+    @OneToOne
+    private Company company;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public String getPartyId() {
         return partyId;

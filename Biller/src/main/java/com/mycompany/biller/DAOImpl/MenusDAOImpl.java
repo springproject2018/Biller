@@ -5,43 +5,62 @@
  */
 package com.mycompany.biller.DAOImpl;
 
-
 import com.mycompany.biller.DAO.*;
+import com.mycompany.biller.model.MenuRole;
 import com.mycompany.biller.model.Menus;
 import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author ismail
  */
-public class MenusDAOImpl implements MenusDAO{
+@Repository
+public class MenusDAOImpl implements MenusDAO {
+
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Override
     public void addMenus(Menus menus) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(menus);
     }
 
     @Override
     public void updateMenus(Menus menus) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = sessionFactory.getCurrentSession();
+        session.update(menus);
     }
 
     @Override
-    public void deleteMenus(String menuId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteMenus(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Menus menus = (Menus) session.load(Menus.class, new Integer(id));
+        if (menus != null) {
+            session.delete(menus);
+        }
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Menus> listAllMenus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = sessionFactory.getCurrentSession();
+        List<Menus> menusList = session.createQuery("from Menu").list();
+        return menusList;
     }
 
     @Override
-    public List<Menus> findById(String menuId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Menus> findById(int id) {
+        String selectQuery = "FROM Menu WHERE MENU_ID = :id";
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery(selectQuery)
+                .setParameter("id", id)
+                .list();
     }
 
-
-    
-     
 }

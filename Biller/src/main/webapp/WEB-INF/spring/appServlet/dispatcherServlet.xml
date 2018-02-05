@@ -29,7 +29,7 @@
                     destroy-method="close">
         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <beans:property name="url"
-                        value="jdbc:mysql://localhost:3306/BillerDB" />
+                        value="jdbc:mysql://localhost:3306/BillerDB1" />
         <beans:property name="username" value="root" />
         <beans:property name="password" value="root" />
     </beans:bean>-->
@@ -55,8 +55,8 @@
         </beans:property>
         <beans:property name="hibernateProperties">
             <beans:props>
-                <!--<beans:prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</beans:prop>-->
-                <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>
+                <beans:prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</beans:prop>
+                <!--<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>-->
                 <beans:prop key="hibernate.show_sql">true</beans:prop>
                 <beans:prop key="hibernate.format_sql">true</beans:prop>
                 <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>

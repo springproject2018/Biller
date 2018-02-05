@@ -29,8 +29,7 @@ public class Company {
     @Column(name = "NAME")
     private String name;
 
-    @OneToOne
-    private Party Party;
+   
 
     public int getCompanyId() {
         return companyId;
@@ -40,13 +39,7 @@ public class Company {
         this.companyId = companyId;
     }
 
-    public Party getParty() {
-        return Party;
-    }
-
-    public void setParty(Party Party) {
-        this.Party = Party;
-    }
+    
 
     public String getName() {
         return name;
@@ -58,8 +51,10 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" + "companyId=" + companyId + ", name=" + name + ", Party=" + Party + '}';
+        return "Company{" + "companyId=" + companyId + ", name=" + name + '}';
     }
+
+   
 
 
 

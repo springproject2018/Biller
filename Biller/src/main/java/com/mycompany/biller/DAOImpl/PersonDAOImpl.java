@@ -6,8 +6,8 @@
 package com.mycompany.biller.DAOImpl;
 
 import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Component;
+import com.mycompany.biller.model.PartyType;
+import com.mycompany.biller.model.Person;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,47 +19,47 @@ import org.springframework.stereotype.Repository;
  * @author ismail
  */
 @Repository
-public class ComponentDAOImpl implements ComponentDAO {
+public class PersonDAOImpl implements PersonDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void addComponent(Component component) {
+    public void addPerson(Person person) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(component);
+        session.persist(person);
     }
 
     @Override
-    public void updateComponent(Component component) {
+    public void updatePerson(Person person) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(component);
+        session.update(person);
     }
 
     @Override
-    public void deleteComponent(int componentId) {
+    public void deletePerson(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Component component = (Component) session.load(Component.class, new Integer(componentId));
-        if (component != null) {
-            session.delete(component);
+        Person person = (Person) session.load(Person.class, new Integer(id));
+        if (person != null) {
+            session.delete(person);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Component> listAllComponent() {
+    public List<Person> listAllPerson() {
         Session session = sessionFactory.getCurrentSession();
-        List<Component> componentList = session.createQuery("from Party").list();
-        return componentList;
+        List<Person> personList = session.createQuery("from Person").list();
+        return personList;
     }
 
     @Override
-    public List<Component> findById(int componentId) {
-        String selectQuery = "FROM Component WHERE COMPONENT_ID = :componentId";
+    public List<Person> findById(int id) {
+        String selectQuery = "FROM Person WHERE PERSON_ID = :id";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
-                .setParameter("componentId", componentId)
+                .setParameter("id", id)
                 .list();
     }
 

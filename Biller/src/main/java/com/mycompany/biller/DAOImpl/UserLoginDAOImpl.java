@@ -18,47 +18,43 @@ import com.mycompany.biller.DAO.UserLoginDAO;
  * @author Admin
  */
 @Repository
-public class UserDAOImpl implements UserLoginDAO {
+public class UserLoginDAOImpl implements UserLoginDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-//    public void setSessionFactory(SessionFactory sessionFactory) {
-//        this.sessionFactory = sessionFactory;
-//    }
-
     @Override
-    public void addUsers(UserLogin u) {
+    public void addUserLogin(UserLogin userLogin) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(u);
+        session.persist(userLogin);
     }
 
     @Override
-    public void updateUsers(UserLogin u) {
+    public void updateUserLogin(UserLogin userLogin) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(u);
+        session.update(userLogin);
     }
 
     @Override
-    public void deleteUsers(int id) {
+    public void deleteUserLogin(int id) {
         Session session = sessionFactory.getCurrentSession();
-        UserLogin u = (UserLogin) session.load(UserLogin.class, new Integer(id));
-        if (u != null) {
-            session.delete(u);
+        UserLogin userLogin = (UserLogin) session.load(UserLogin.class, new Integer(id));
+        if (userLogin != null) {
+            session.delete(userLogin);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<UserLogin> listAllUsers() {
+    public List<UserLogin> listAllUserLogin() {
         Session session = sessionFactory.getCurrentSession();
-        List<UserLogin> personList = session.createQuery("from Users").list();
-        return   personList;
+        List<UserLogin> userLoginList = session.createQuery("from UserLogin").list();
+        return userLoginList;
     }
 
     @Override
     public List<UserLogin> findById(int id) {
-        String selectQuery = "FROM Users WHERE user_id = :id";
+        String selectQuery = "FROM UserLogin WHERE USER_LOGIN_ID = :id";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)

@@ -7,6 +7,8 @@ package com.mycompany.biller.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,7 +23,8 @@ public class PartyType {
 
     @Id
     @Column(name = "PARTY_TYPE_ID")
-    private String partyTypeId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int partyTypeId;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -48,11 +51,11 @@ public class PartyType {
         this.type = type;
     }
 
-    public String getPartyTypeId() {
+    public int getPartyTypeId() {
         return partyTypeId;
     }
 
-    public void setPartyTypeId(String partyTypeId) {
+    public void setPartyTypeId(int partyTypeId) {
         this.partyTypeId = partyTypeId;
     }
 

@@ -5,6 +5,7 @@
  */
 package com.mycompany.biller.service;
 
+import com.mycompany.biller.DAO.*;
 import com.mycompany.biller.model.UserLogin;
 import java.util.List;
 
@@ -12,16 +13,16 @@ import java.util.List;
  *
  * @author Admin
  */
-public interface UsersService {
-    
-    public void addUsers(UserLogin u);
+public interface UserLoginService {
 
-    public void updateUsers(UserLogin u);
+    public void addUserLogin(UserLogin userLogin);
 
-    public void deleteUsers(int id);
+    public void updateUserLogin(UserLogin userLogin);
 
-    public List<UserLogin> listAllUsers();
+    public void deleteUserLogin(int id);
+
+    public List<UserLogin> listAllUserLogin();
 
     public List<UserLogin> findById(int id);
-    
+
 }
