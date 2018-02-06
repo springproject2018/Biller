@@ -24,9 +24,7 @@ public class PartyServiceImpl implements PartyService {
     @Autowired
     private PartyDAO partyDAO;
 
-    public void setPartyDAO(PartyDAO partyDAO) {
-        this.partyDAO = partyDAO;
-    }
+   
     
     @Override
     public void addParty(Party party) {

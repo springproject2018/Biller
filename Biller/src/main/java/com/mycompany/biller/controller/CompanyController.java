@@ -7,7 +7,7 @@ package com.mycompany.biller.controller;
 
 import com.mycompany.biller.model.Company;
 import com.mycompany.biller.model.Party;
-import com.mycompany.biller.service.PartyService;
+import com.mycompany.biller.service.CompanyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,66 +21,54 @@ import org.springframework.web.bind.annotation.RestController;
  * @author ismail
  */
 @RestController
-@RequestMapping(value = "/party")
-public class PartyController {
+@RequestMapping(value = "/company")
+public class CompanyController {
 
     @Autowired
-    private PartyService partyService;
+    private CompanyService companyService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "partyId") String partyId,
-            @RequestParam(value = "desc") String desc,
-            @RequestParam(value = "comId") int comId) {
+    String add(@RequestParam(value = "name") String name) {
 
         Company company = new Company();
-        company.setCompanyId(comId);
-
-        Party party = new Party();
-        party.setPartyId(partyId);
-        party.setDescription(desc);
-        party.setCompany(company);
-        partyService.addParty(party);
+        company.setName(name);
+        companyService.addCompany(company);
         return "OK";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "partyId") String partyId,
-            @RequestParam(value = "desc") String desc,
-            @RequestParam(value = "comId") int comId) {
+    String update(@RequestParam(value = "companyId") int companyId, @RequestParam(value = "name") String name) {
         Company company = new Company();
-        company.setCompanyId(comId);
-
-        Party party = new Party();
-        party.setPartyId(partyId);
-        party.setDescription(desc);
-        party.setCompany(company);
-        partyService.updateParty(party);
+        company.setCompanyId(companyId);
+        company.setName(name);
+        companyService.addCompany(company);
         return "OK";
+
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
-    String delete(@RequestParam(value = "partyId") String partyId) {
-        System.out.println("deleted");
+    String delete(@RequestParam(value = "companyId") int companyId) {
 
-        partyService.deleteParty(partyId);
+        companyService.deleteCompany(companyId);
         return "OK";
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
-    public List<Party> listAll() {
+    public List<Company> listAll() {
 
-        return partyService.listAllParty();
+        return companyService.listAllCompany();
 
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
-    public List<Party> findById(@RequestParam(value = "partyId") String partyId) {
-        return partyService.findById(partyId);
+    public List<Company> findById(@RequestParam(value = "CompanyId") int CompanyId) {
+        return companyService.findById(CompanyId);
 
     }
+
 }
