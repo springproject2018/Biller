@@ -27,9 +27,6 @@ public class Party {
     @Column(name = "DESCRIPTIN")
     private String description;
 
-    @ManyToOne
-    private PartyType partyType;
-    
     @OneToOne
     private Company company;
 
@@ -57,17 +54,9 @@ public class Party {
         this.partyId = partyId;
     }
 
-    public PartyType getPartyType() {
-        return partyType;
-    }
-
-    public void setPartyType(PartyType partyType) {
-        this.partyType = partyType;
-    }
-
     @Override
     public String toString() {
-        return "Party{" + "partyId=" + partyId + ", description=" + description + ", partyType=" + partyType + '}';
+        return "Party{" + "partyId=" + partyId + ", description=" + description + '}';
     }
 
 }
