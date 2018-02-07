@@ -6,8 +6,8 @@
 package com.mycompany.biller.controller;
 
 import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Party;
-import com.mycompany.biller.service.CompanyService;
+import com.mycompany.biller.model.Component;
+import com.mycompany.biller.service.ComponentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,53 +21,53 @@ import org.springframework.web.bind.annotation.RestController;
  * @author ismail
  */
 @RestController
-@RequestMapping(value = "/company")
-public class CompanyController {
+@RequestMapping(value = "/component")
+public class ComponentController {
 
     @Autowired
-    private CompanyService companyService;
+    private ComponentService componentService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "name") String name) {
+    String add(@RequestParam(value = "description") String description) {
 
-        Company company = new Company();
-        company.setName(name);
-        companyService.addCompany(company);
+        Component component = new Component();
+        component.setDescription(description);
+        componentService.addComponent(component);
         return "OK";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "companyId") int companyId, @RequestParam(value = "name") String name) {
-        Company company = new Company();
-        company.setCompanyId(companyId);
-        company.setName(name);
-        companyService.updateCompany(company);
+    String update(@RequestParam(value = "componentId") int componentId, @RequestParam(value = "description") String description) {
+        Component component = new Component();
+        component.setComponentId(componentId);
+        component.setDescription(description);
+        componentService.updateComponent(component);
         return "OK";
 
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
-    String delete(@RequestParam(value = "companyId") int companyId) {
+    String delete(@RequestParam(value = "componentId") int componentId) {
 
-        companyService.deleteCompany(companyId);
+        componentService.deleteComponent(componentId);
         return "OK";
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
-    public List<Company> listAll() {
+    public List<Component> listAll() {
 
-        return companyService.listAllCompany();
+        return componentService.listAllComponent();
 
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
-    public List<Company> findById(@RequestParam(value = "CompanyId") int CompanyId) {
-        return companyService.findById(CompanyId);
+    public List<Component> findById(@RequestParam(value = "componentId") int componentId) {
+        return componentService.findById(componentId);
 
     }
 

@@ -5,9 +5,8 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Party;
-import com.mycompany.biller.service.CompanyService;
+import com.mycompany.biller.model.Type;
+import com.mycompany.biller.service.TypeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,53 +20,55 @@ import org.springframework.web.bind.annotation.RestController;
  * @author ismail
  */
 @RestController
-@RequestMapping(value = "/company")
-public class CompanyController {
+@RequestMapping(value = "/type")
+public class TypeController {
 
     @Autowired
-    private CompanyService companyService;
+    private TypeService typeService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "name") String name) {
+    String add(@RequestParam(value = "description") String description) {
 
-        Company company = new Company();
-        company.setName(name);
-        companyService.addCompany(company);
+        Type type = new Type();
+        type.setDescription(description);
+        typeService.addType(type);
         return "OK";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "companyId") int companyId, @RequestParam(value = "name") String name) {
-        Company company = new Company();
-        company.setCompanyId(companyId);
-        company.setName(name);
-        companyService.updateCompany(company);
+    String update(@RequestParam(value = "typeID") int typeID,
+            @RequestParam(value = "description") String description) {
+
+        Type type = new Type();
+        type.setTypeID(typeID);
+        type.setDescription(description);
+        typeService.updateType(type);
         return "OK";
 
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
-    String delete(@RequestParam(value = "companyId") int companyId) {
+    String delete(@RequestParam(value = "typeID") int typeID) {
 
-        companyService.deleteCompany(companyId);
+        typeService.deleteType(typeID);
         return "OK";
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
-    public List<Company> listAll() {
+    public List<Type> listAll() {
 
-        return companyService.listAllCompany();
+        return typeService.listAllType();
 
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
-    public List<Company> findById(@RequestParam(value = "CompanyId") int CompanyId) {
-        return companyService.findById(CompanyId);
+    public List<Type> findById(@RequestParam(value = "typeID") int typeID) {
+        return typeService.findById(typeID);
 
     }
 
