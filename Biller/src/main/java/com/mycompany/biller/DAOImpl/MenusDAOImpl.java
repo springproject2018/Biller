@@ -49,13 +49,13 @@ public class MenusDAOImpl implements MenusDAO {
     @SuppressWarnings("unchecked")
     public List<Menus> listAllMenus() {
         Session session = sessionFactory.getCurrentSession();
-        List<Menus> menusList = session.createQuery("from Menu").list();
+        List<Menus> menusList = session.createQuery("from Menus").list();
         return menusList;
     }
 
     @Override
     public List<Menus> findById(int id) {
-        String selectQuery = "FROM Menu WHERE MENU_ID = :id";
+        String selectQuery = "FROM Menus WHERE MENU_ID = :id";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
