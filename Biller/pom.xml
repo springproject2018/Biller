@@ -16,7 +16,7 @@
         <org.springframework-version>4.3.6.RELEASE</org.springframework-version>
         <org.aspectj-version>1.7.4</org.aspectj-version>
         <org.slf4j-version>1.7.5</org.slf4j-version>
-        <hibernate.version>4.3.5.Final</hibernate.version>
+        <hibernate.version>4.3.6.Final</hibernate.version>
     
     </properties>
     
@@ -176,6 +176,20 @@
             <artifactId>ojdbc7</artifactId>
             <version>12.1.0.1</version>
         </dependency>
+        
+        <!-- Database Connection Pooling -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>			
+        </dependency>
+        
         
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
