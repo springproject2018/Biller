@@ -26,10 +26,19 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int companyId;
 
+    @Column(name = "COMPANY_CODE")
+    private String companyCode;
+
     @Column(name = "NAME")
     private String name;
 
-   
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
+    }
 
     public int getCompanyId() {
         return companyId;
@@ -38,8 +47,6 @@ public class Company {
     public void setCompanyId(int companyId) {
         this.companyId = companyId;
     }
-
-    
 
     public String getName() {
         return name;
@@ -51,11 +58,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" + "companyId=" + companyId + ", name=" + name + '}';
+        return "Company{" + "companyId=" + companyId + ", companyCode=" + companyCode + ", name=" + name + '}';
     }
-
-   
-
-
 
 }

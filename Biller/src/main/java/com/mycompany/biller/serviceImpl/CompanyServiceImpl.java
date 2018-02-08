@@ -53,4 +53,9 @@ public class CompanyServiceImpl implements CompanyService {
         return companyDAO.findById(companyId);
     }
 
+    @Override
+    public Company createCompany(Company company) {
+        return companyDAO.createCompany(company);
+    }
+
 }

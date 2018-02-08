@@ -35,7 +35,7 @@ public class PersonController {
             @RequestParam(value = "middleName") String middleName,
             @RequestParam(value = "lastName") String lastName,
             @RequestParam(value = "gender") char gender,
-            @RequestParam(value = "partyId") String partyId) {
+            @RequestParam(value = "partyId") int partyId) {
 
         Party party = new Party();
         party.setPartyId(partyId);
@@ -57,7 +57,7 @@ public class PersonController {
             @RequestParam(value = "middleName") String middleName,
             @RequestParam(value = "lastName") String lastName,
             @RequestParam(value = "gender") char gender,
-            @RequestParam(value = "partyId") String partyId) {
+            @RequestParam(value = "partyId") int partyId) {
 
         Party party = new Party();
         party.setPartyId(partyId);

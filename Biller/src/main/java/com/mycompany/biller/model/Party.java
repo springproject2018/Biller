@@ -7,8 +7,9 @@ package com.mycompany.biller.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,8 +22,20 @@ import javax.persistence.Table;
 public class Party {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PARTY_ID")
-    private String partyId;
+    private int partyId;
+
+    @Column(name = "PARTY_CODE")
+    private String partyCode;
+
+    public String getPartyCode() {
+        return partyCode;
+    }
+
+    public void setPartyCode(String partyCode) {
+        this.partyCode = partyCode;
+    }
 
     @Column(name = "DESCRIPTIN")
     private String description;
@@ -46,17 +59,17 @@ public class Party {
         this.company = company;
     }
 
-    public String getPartyId() {
+    public int getPartyId() {
         return partyId;
     }
 
-    public void setPartyId(String partyId) {
+    public void setPartyId(int partyId) {
         this.partyId = partyId;
     }
 
     @Override
     public String toString() {
-        return "Party{" + "partyId=" + partyId + ", description=" + description + '}';
+        return "Party{" + "partyId=" + partyId + ", partyCode=" + partyCode + ", description=" + description + ", company=" + company + '}';
     }
 
 }

@@ -37,7 +37,7 @@ public class PartyServiceImpl implements PartyService {
     }
     
     @Override
-    public void deleteParty(String partyId) {
+    public void deleteParty(int partyId) {
         partyDAO.deleteParty(partyId);
     }
     
@@ -47,7 +47,7 @@ public class PartyServiceImpl implements PartyService {
     }
     
     @Override
-    public List<Party> findById(String partyId) {
+    public List<Party> findById(int partyId) {
         return partyDAO.findById(partyId);
     }
     

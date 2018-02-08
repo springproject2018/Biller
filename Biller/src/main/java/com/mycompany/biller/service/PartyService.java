@@ -19,11 +19,11 @@ public interface PartyService {
 
     public void updateParty(Party party);
 
-    public void deleteParty(String partyId);
+    public void deleteParty(int partyId);
 
     public List<Party> listAllParty();
 
-    public List<Party> findById(String partyId);
+    public List<Party> findById(int partyId);
     
     
 }

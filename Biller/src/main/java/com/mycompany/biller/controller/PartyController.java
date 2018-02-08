@@ -29,8 +29,9 @@ public class PartyController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "partyId") String partyId,
+    String add(@RequestParam(value = "partyId") int partyId,
             @RequestParam(value = "desc") String desc,
+            @RequestParam(value = "partyCode") String partyCode,
             @RequestParam(value = "comId") int comId) {
 
         Company company = new Company();
@@ -39,6 +40,7 @@ public class PartyController {
         Party party = new Party();
         party.setPartyId(partyId);
         party.setDescription(desc);
+        party.setPartyCode(partyCode);
         party.setCompany(company);
         partyService.addParty(party);
         return "OK";
@@ -46,8 +48,9 @@ public class PartyController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "partyId") String partyId,
+    String update(@RequestParam(value = "partyId") int partyId,
             @RequestParam(value = "desc") String desc,
+            @RequestParam(value = "partyCode") String partyCode,
             @RequestParam(value = "comId") int comId) {
         Company company = new Company();
         company.setCompanyId(comId);
@@ -55,6 +58,7 @@ public class PartyController {
         Party party = new Party();
         party.setPartyId(partyId);
         party.setDescription(desc);
+        party.setPartyCode(partyCode);
         party.setCompany(company);
         partyService.updateParty(party);
         return "OK";
@@ -62,7 +66,7 @@ public class PartyController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
-    String delete(@RequestParam(value = "partyId") String partyId) {
+    String delete(@RequestParam(value = "partyId") int partyId) {
         System.out.println("deleted");
 
         partyService.deleteParty(partyId);
@@ -79,7 +83,7 @@ public class PartyController {
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
-    public List<Party> findById(@RequestParam(value = "partyId") String partyId) {
+    public List<Party> findById(@RequestParam(value = "partyId") int partyId) {
         return partyService.findById(partyId);
 
     }

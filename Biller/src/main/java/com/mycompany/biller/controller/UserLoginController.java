@@ -32,7 +32,7 @@ public class UserLoginController {
     String add(@RequestParam(value = "userName") String name,
             @RequestParam(value = "password") String password,
             @RequestParam(value = "enabled") char enabled,
-            @RequestParam(value = "party") String partyID) {
+            @RequestParam(value = "party") int partyID) {
         System.out.println("adeed");
 
         Party party = new Party();
@@ -53,7 +53,7 @@ public class UserLoginController {
             @RequestParam(value = "userName") String name,
             @RequestParam(value = "password") String password,
             @RequestParam(value = "enabled") char enabled,
-            @RequestParam(value = "party") String partyID) {
+            @RequestParam(value = "party") int partyID) {
         System.out.println("updated");
         Party party = new Party();
         party.setPartyId(partyID);

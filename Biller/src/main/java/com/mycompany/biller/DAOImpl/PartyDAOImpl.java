@@ -38,9 +38,9 @@ public class PartyDAOImpl implements PartyDAO {
     }
 
     @Override
-    public void deleteParty(String partyId) {
+    public void deleteParty(int partyId) {
         Session session = sessionFactory.getCurrentSession();
-        Party party = (Party) session.load(Party.class, new String(partyId));
+        Party party = (Party) session.load(Party.class, partyId);
         if (party != null) {
             session.delete(party);
         }
@@ -55,7 +55,7 @@ public class PartyDAOImpl implements PartyDAO {
     }
 
     @Override
-    public List<Party> findById(String partyId) {
+    public List<Party> findById(int partyId) {
         String selectQuery = "FROM PARTY WHERE PARTY_ID = :partyId";
         return sessionFactory
                 .getCurrentSession()

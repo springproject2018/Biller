@@ -55,12 +55,21 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     @Override
     public List<Company> findById(int companyId) {
-      String selectQuery = "FROM Company WHERE COMPANY_ID = :companyId";
+        String selectQuery = "FROM Company WHERE COMPANY_ID = :companyId";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
                 .setParameter("companyId", companyId)
                 .list();
+    }
+
+    @Override
+    public Company createCompany(Company company) {
+        int id = (int) sessionFactory.getCurrentSession().save(company);
+
+        company.setCompanyId(id);
+
+        return company;
     }
 
 }

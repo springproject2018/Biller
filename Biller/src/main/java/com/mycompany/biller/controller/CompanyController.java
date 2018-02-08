@@ -7,9 +7,13 @@ package com.mycompany.biller.controller;
 
 import com.mycompany.biller.model.Company;
 import com.mycompany.biller.model.Party;
+import com.mycompany.biller.resources.CompanyResources;
 import com.mycompany.biller.service.CompanyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,19 +33,34 @@ public class CompanyController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "name") String name) {
+    String add(@RequestParam(value = "name") String name, @RequestParam(value = "companyCode") String companyCode) {
 
         Company company = new Company();
         company.setName(name);
+        company.setCompanyCode(companyCode);
         companyService.addCompany(company);
         return "OK";
     }
 
+    @RequestMapping(value = "/createCompany", method = RequestMethod.POST)
+    public ResponseEntity<CompanyResources> createDepartment(@RequestBody CompanyResources companyResources) {
+        System.out.println("*** createCompany ***");
+
+        Company company = companyService.createCompany(companyResources.toCompany());
+
+        companyResources.setCompanyId(company.getCompanyId());
+        companyResources.setCompanyCode(company.getCompanyCode());
+        companyResources.setName(company.getName());
+
+        return new ResponseEntity<CompanyResources>(companyResources, HttpStatus.CREATED);
+    }
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "companyId") int companyId, @RequestParam(value = "name") String name) {
+    String update(@RequestParam(value = "companyId") int companyId, @RequestParam(value = "companyCode") String companyCode, @RequestParam(value = "name") String name) {
         Company company = new Company();
         company.setCompanyId(companyId);
+        company.setCompanyCode(companyCode);
         company.setName(name);
         companyService.updateCompany(company);
         return "OK";

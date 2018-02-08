@@ -33,7 +33,7 @@ public class PartyTypeController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
-            @RequestParam(value = "partyId") String partyId,
+            @RequestParam(value = "partyId") int partyId,
             @RequestParam(value = "typeID") int typeID) {
 
         Party party = new Party();
@@ -54,7 +54,7 @@ public class PartyTypeController {
     public @ResponseBody
     String update(@RequestParam(value = "partyTypeId") int partyTypeId,
             @RequestParam(value = "description") String description,
-            @RequestParam(value = "partyId") String partyId,
+            @RequestParam(value = "partyId") int partyId,
             @RequestParam(value = "typeID") int typeID) {
 
         Party party = new Party();
