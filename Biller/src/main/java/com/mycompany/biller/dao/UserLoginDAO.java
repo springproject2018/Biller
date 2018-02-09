@@ -7,6 +7,7 @@ package com.mycompany.biller.dao;
 
 import com.mycompany.biller.dto.UserLogin;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -23,5 +24,8 @@ public interface UserLoginDAO {
     public List<UserLogin> listAllUserLogin();
 
     public List<UserLogin> findById(int id);
+    
+    public List<Object> usrerLoginRole(int userLoginId);
+    
 
 }

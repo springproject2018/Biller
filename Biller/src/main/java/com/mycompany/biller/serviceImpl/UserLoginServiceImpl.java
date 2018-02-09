@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.mycompany.biller.dao.UserLoginDAO;
 import com.mycompany.biller.service.UserLoginService;
+import java.util.Map;
 
 /**
  *
@@ -47,6 +48,11 @@ public class UserLoginServiceImpl implements UserLoginService {
     @Override
     public List<UserLogin> findById(int id) {
         return userLoginDAO.findById(id);
+    }
+
+    @Override
+    public List<Object> usrerLoginRole(int userLoginId) {
+       return userLoginDAO.usrerLoginRole(userLoginId);
     }
 
 }

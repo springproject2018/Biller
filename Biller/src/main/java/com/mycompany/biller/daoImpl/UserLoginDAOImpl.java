@@ -12,6 +12,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.mycompany.biller.dao.UserLoginDAO;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -60,6 +62,24 @@ public class UserLoginDAOImpl implements UserLoginDAO {
                 .createQuery(selectQuery)
                 .setParameter("id", id)
                 .list();
+    }
+
+    @Override
+    public List<Object> usrerLoginRole(int userLoginId) {
+        String selectQuery = "select UL.userLoginId,UL.userName,UR.description AS DESC_USER_ROLE ,RG.description AS DESC_ROLE_GROUP,\n"
+                + "MR.description AS DESC_MENU_ROLE,MU.description AS DESC_MENUS,COM.description AS DESC_COMP\n"
+                + "from UserLogin AS UL ,UserRole AS UR,RoleGroup AS RG,MenuRole AS MR,Menus AS MU,Component AS COM\n"
+                + "WHERE UL.userLoginId = :userLoginId\n"
+                + "AND UL.userLoginId = UR.userLogin.userLoginId\n"
+                + "AND UR.roleGroup.roleGroupId = RG.roleGroupId\n"
+                + "AND RG.roleGroupId = MR.roleGroup.roleGroupId\n"
+                + "AND MR.menus.menusId = MU.menusId\n"
+                + "AND MU.component.componentId = COM.componentId";
+        System.out.println("** usrerLoginRole **");
+//        System.out.println("selectQuery "+selectQuery);
+//        System.out.println("** "+sessionFactory.getCurrentSession().createQuery(selectQuery).setParameter("userLoginId", userLoginId).list()+" **");
+//        Map<String, Object> xx = new HashMap<String, Object>();
+        return sessionFactory.getCurrentSession().createQuery(selectQuery).setParameter("userLoginId", userLoginId).list();
     }
 
 }

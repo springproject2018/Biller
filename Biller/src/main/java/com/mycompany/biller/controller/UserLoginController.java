@@ -30,11 +30,10 @@ public class UserLoginController {
 
     @CrossOrigin
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
-    public @ResponseBody
-    String add(@RequestParam(value = "userName") String name,
-            @RequestParam(value = "password") String password) {
-
-        return "OK";
+    @ResponseBody List<Object> checkLogin() {
+        System.out.println("** checkLogin  **");
+//        System.out.println("** checkLogin  **" + userLoginService.usrerLoginRole(1));
+        return userLoginService.usrerLoginRole(2);
     }
 
     @CrossOrigin
