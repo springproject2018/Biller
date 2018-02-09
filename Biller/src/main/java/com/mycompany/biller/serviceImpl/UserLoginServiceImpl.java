@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mycompany.biller.dao.UserLoginDAO;
 import com.mycompany.biller.service.UserLoginService;
 import java.util.Map;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -24,9 +25,13 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Autowired
     private UserLoginDAO userLoginDAO;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void addUserLogin(UserLogin userLogin) {
+//        userLogin.setPassword(passwordEncoder.encode(userLogin.getPassword()));
         userLoginDAO.addUserLogin(userLogin);
     }
 
@@ -51,8 +56,16 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
     @Override
-    public List<Object> usrerLoginRole(int userLoginId) {
-       return userLoginDAO.usrerLoginRole(userLoginId);
+    public List<Object> usrerLoginRole(String userName) {
+       return userLoginDAO.usrerLoginRole( userName);
+    }
+
+    @Override
+    public boolean checkLogin(String userName, String password) {
+        
+        return userLoginDAO.checkLogin(userName, password);
+//                return userLoginDAO.checkLogin(userName, passwordEncoder.encode(password));
+
     }
 
 }

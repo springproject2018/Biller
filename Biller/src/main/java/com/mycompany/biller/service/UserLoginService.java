@@ -25,6 +25,8 @@ public interface UserLoginService {
 
     public List<UserLogin> findById(int id);
 
-    public List<Object> usrerLoginRole(int userLoginId);
+    public List<Object> usrerLoginRole(String userName);
+    
+    public boolean checkLogin (String userName, String password);
 
 }

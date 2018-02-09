@@ -8,6 +8,7 @@ package com.mycompany.biller.controller;
 import com.mycompany.biller.dto.Party;
 import com.mycompany.biller.dto.UserLogin;
 import com.mycompany.biller.service.UserLoginService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,10 +31,16 @@ public class UserLoginController {
 
     @CrossOrigin
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
-    @ResponseBody List<Object> checkLogin() {
-        System.out.println("** checkLogin  **");
-//        System.out.println("** checkLogin  **" + userLoginService.usrerLoginRole(1));
-        return userLoginService.usrerLoginRole(2);
+    @ResponseBody
+    List<Object> checkLogin(@RequestParam(value = "userName") String userName,
+            @RequestParam(value = "password") String password) {
+        if (userLoginService.checkLogin(userName, password)) {
+            return userLoginService.usrerLoginRole(userName);
+        } else {
+            List<Object> list = new ArrayList<Object>();
+            list.add("Invalid");
+            return list;
+        }
     }
 
     @CrossOrigin

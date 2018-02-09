@@ -65,11 +65,11 @@ public class UserLoginDAOImpl implements UserLoginDAO {
     }
 
     @Override
-    public List<Object> usrerLoginRole(int userLoginId) {
+    public List<Object> usrerLoginRole(String userName) {
         String selectQuery = "select UL.userLoginId,UL.userName,UR.description AS DESC_USER_ROLE ,RG.description AS DESC_ROLE_GROUP,\n"
                 + "MR.description AS DESC_MENU_ROLE,MU.description AS DESC_MENUS,COM.description AS DESC_COMP\n"
                 + "from UserLogin AS UL ,UserRole AS UR,RoleGroup AS RG,MenuRole AS MR,Menus AS MU,Component AS COM\n"
-                + "WHERE UL.userLoginId = :userLoginId\n"
+                + "WHERE UL.userName = :userName\n"
                 + "AND UL.userLoginId = UR.userLogin.userLoginId\n"
                 + "AND UR.roleGroup.roleGroupId = RG.roleGroupId\n"
                 + "AND RG.roleGroupId = MR.roleGroup.roleGroupId\n"
@@ -79,7 +79,24 @@ public class UserLoginDAOImpl implements UserLoginDAO {
 //        System.out.println("selectQuery "+selectQuery);
 //        System.out.println("** "+sessionFactory.getCurrentSession().createQuery(selectQuery).setParameter("userLoginId", userLoginId).list()+" **");
 //        Map<String, Object> xx = new HashMap<String, Object>();
-        return sessionFactory.getCurrentSession().createQuery(selectQuery).setParameter("userLoginId", userLoginId).list();
+        return sessionFactory.getCurrentSession().createQuery(selectQuery).setParameter("userName", userName).list();
+    }
+
+    @Override
+    public boolean checkLogin(String userName, String password) {
+        String selectQuery = "FROM UserLogin WHERE userName = :userName AND password=:password";
+        List list = sessionFactory
+                .getCurrentSession()
+                .createQuery(selectQuery)
+                .setParameter("userName", userName)
+                .setParameter("password", password)
+                .list();
+        System.out.println("list " + list);
+        if (list.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
