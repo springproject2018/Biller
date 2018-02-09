@@ -23,18 +23,18 @@
     <dependencies>
         
         <!--MySql 5.1.15 Connector-->    
-        <dependency>
+<!--        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.15</version>
-        </dependency>
+        </dependency>-->
         
         <!--oracle 12.1.0.1 Connector-->    
-<!--        <dependency>
+        <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc7</artifactId>
             <version>12.1.0.1</version>
-        </dependency>-->
+        </dependency>
         
         
         <dependency>
