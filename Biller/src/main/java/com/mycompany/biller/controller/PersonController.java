@@ -5,13 +5,14 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Party;
-import com.mycompany.biller.model.PartyType;
-import com.mycompany.biller.model.Person;
-import com.mycompany.biller.model.Type;
+import com.mycompany.biller.dto.Party;
+import com.mycompany.biller.dto.PartyType;
+import com.mycompany.biller.dto.Person;
+import com.mycompany.biller.dto.Type;
 import com.mycompany.biller.service.PersonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "fisrtName") String fisrtName,
@@ -50,6 +52,7 @@ public class PersonController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "personId") int personId,
@@ -74,6 +77,7 @@ public class PersonController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "personId") int personId) {
@@ -82,6 +86,7 @@ public class PersonController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Person> listAll() {
@@ -90,6 +95,7 @@ public class PersonController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Person> findById(@RequestParam(value = "personId") int personId) {

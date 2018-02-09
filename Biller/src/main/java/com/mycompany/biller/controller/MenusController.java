@@ -5,13 +5,14 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Component;
-import com.mycompany.biller.model.MenuRole;
-import com.mycompany.biller.model.Menus;
-import com.mycompany.biller.model.RoleGroup;
+import com.mycompany.biller.dto.Component;
+import com.mycompany.biller.dto.MenuRole;
+import com.mycompany.biller.dto.Menus;
+import com.mycompany.biller.dto.RoleGroup;
 import com.mycompany.biller.service.MenusService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,7 @@ public class MenusController {
     @Autowired
     private MenusService menusService;
 
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
@@ -44,6 +46,7 @@ public class MenusController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "menusId") int menusId,
@@ -62,6 +65,7 @@ public class MenusController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "menusId") int menusId) {
@@ -70,6 +74,7 @@ public class MenusController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Menus> listAll() {
@@ -78,6 +83,7 @@ public class MenusController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Menus> findById(@RequestParam(value = "menusId") int menusId) {

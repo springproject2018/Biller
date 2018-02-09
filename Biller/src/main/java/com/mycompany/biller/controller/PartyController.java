@@ -5,11 +5,12 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Party;
+import com.mycompany.biller.dto.Company;
+import com.mycompany.biller.dto.Party;
 import com.mycompany.biller.service.PartyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,9 +28,10 @@ public class PartyController {
     @Autowired
     private PartyService partyService;
 
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "partyId") int partyId,
+    String add(
             @RequestParam(value = "desc") String desc,
             @RequestParam(value = "partyCode") String partyCode,
             @RequestParam(value = "comId") int comId) {
@@ -38,7 +40,6 @@ public class PartyController {
         company.setCompanyId(comId);
 
         Party party = new Party();
-        party.setPartyId(partyId);
         party.setDescription(desc);
         party.setPartyCode(partyCode);
         party.setCompany(company);
@@ -46,6 +47,7 @@ public class PartyController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "partyId") int partyId,
@@ -64,6 +66,7 @@ public class PartyController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "partyId") int partyId) {
@@ -73,6 +76,7 @@ public class PartyController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Party> listAll() {
@@ -81,6 +85,7 @@ public class PartyController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Party> findById(@RequestParam(value = "partyId") int partyId) {

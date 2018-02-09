@@ -10,31 +10,31 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = {"com.mycompany.biller.model"})
+@ComponentScan(basePackages = {"com.mycompany.biller.dto"})
 @EnableTransactionManagement
 public class HibernateConfig {
 
     // Change the below based on the DBMS you choose
     
     //Oracle DataBase
-	private final static String DATABASE_URL = "jdbc:oracle:thin:@127.0.0.1:1521/TestDB";
-	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.OracleDialect";
-	private final static String DATABASE_USERNAME = "TestDB";
-	private final static String DATABASE_PASSWORD = "oracle12c";
+//	private final static String DATABASE_URL = "jdbc:oracle:thin:@127.0.0.1:1521/TestDB";
+//	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
+//	private final static String DATABASE_DIALECT = "org.hibernate.dialect.OracleDialect";
+//	private final static String DATABASE_USERNAME = "TestDB";
+//	private final static String DATABASE_PASSWORD = "oracle12c";
     
     
     // MySql DataBase
-//    private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/BillerDB1";
-//    private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-//    private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
-//    private final static String DATABASE_USERNAME = "root";
-//    private final static String DATABASE_PASSWORD = "root";
+    private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/BillerDB1";
+    private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
+    private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
+    private final static String DATABASE_USERNAME = "root";
+    private final static String DATABASE_PASSWORD = "root";
 
     // dataSource bean will be available
     @Bean("dataSource")
@@ -59,7 +59,7 @@ public class HibernateConfig {
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 
         builder.addProperties(getHibernateProperties());
-        builder.scanPackages("com.mycompany.biller.model");
+        builder.scanPackages("com.mycompany.biller.dto");
 
         return builder.buildSessionFactory();
 

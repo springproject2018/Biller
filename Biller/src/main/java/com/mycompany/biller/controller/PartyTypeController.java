@@ -5,14 +5,15 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Component;
-import com.mycompany.biller.model.Menus;
-import com.mycompany.biller.model.Party;
-import com.mycompany.biller.model.PartyType;
-import com.mycompany.biller.model.Type;
+import com.mycompany.biller.dto.Component;
+import com.mycompany.biller.dto.Menus;
+import com.mycompany.biller.dto.Party;
+import com.mycompany.biller.dto.PartyType;
+import com.mycompany.biller.dto.Type;
 import com.mycompany.biller.service.PartyTypeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,17 +31,18 @@ public class PartyTypeController {
     @Autowired
     private PartyTypeService partyTypeService;
 
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
             @RequestParam(value = "partyId") int partyId,
-            @RequestParam(value = "typeID") int typeID) {
+            @RequestParam(value = "typeId") int typeId) {
 
         Party party = new Party();
         party.setPartyId(partyId);
 
         Type type = new Type();
-        type.setTypeID(typeID);
+        type.setTypeID(typeId);
 
         PartyType partyType = new PartyType();
         partyType.setDescription(description);
@@ -50,6 +52,7 @@ public class PartyTypeController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "partyTypeId") int partyTypeId,
@@ -73,6 +76,7 @@ public class PartyTypeController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "partyTypeId") int partyTypeId) {
@@ -89,6 +93,7 @@ public class PartyTypeController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<PartyType> findById(@RequestParam(value = "partyTypeId") int partyTypeId) {

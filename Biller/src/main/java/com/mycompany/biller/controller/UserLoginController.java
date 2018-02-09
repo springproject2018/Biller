@@ -5,11 +5,12 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Party;
-import com.mycompany.biller.model.UserLogin;
+import com.mycompany.biller.dto.Party;
+import com.mycompany.biller.dto.UserLogin;
 import com.mycompany.biller.service.UserLoginService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,12 +28,22 @@ public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
 
+    @CrossOrigin
+    @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
+    public @ResponseBody
+    String add(@RequestParam(value = "userName") String name,
+            @RequestParam(value = "password") String password) {
+
+        return "OK";
+    }
+
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "userName") String name,
             @RequestParam(value = "password") String password,
             @RequestParam(value = "enabled") char enabled,
-            @RequestParam(value = "party") int partyID) {
+            @RequestParam(value = "partyId") int partyID) {
         System.out.println("adeed");
 
         Party party = new Party();
@@ -47,6 +58,7 @@ public class UserLoginController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "userLoginId") int userLoginId,
@@ -68,6 +80,7 @@ public class UserLoginController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "userLoginId") int userId) {
@@ -77,6 +90,7 @@ public class UserLoginController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<UserLogin> listAll() {
@@ -85,6 +99,7 @@ public class UserLoginController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<UserLogin> findById(@RequestParam(value = "userLoginId") int userId) {

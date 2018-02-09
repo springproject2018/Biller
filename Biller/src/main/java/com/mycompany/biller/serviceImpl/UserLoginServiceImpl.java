@@ -5,12 +5,12 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.model.UserLogin;
+import com.mycompany.biller.dto.UserLogin;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.mycompany.biller.DAO.UserLoginDAO;
+import com.mycompany.biller.dao.UserLoginDAO;
 import com.mycompany.biller.service.UserLoginService;
 
 /**

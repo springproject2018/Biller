@@ -5,8 +5,8 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.DAO.MenuRoleDAO;
-import com.mycompany.biller.model.MenuRole;
+import com.mycompany.biller.dao.MenuRoleDAO;
+import com.mycompany.biller.dto.MenuRole;
 import com.mycompany.biller.service.MenuRoleService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,10 +5,11 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Type;
+import com.mycompany.biller.dto.Type;
 import com.mycompany.biller.service.TypeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +27,7 @@ public class TypeController {
     @Autowired
     private TypeService typeService;
 
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description) {
@@ -36,6 +38,7 @@ public class TypeController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "typeID") int typeID,
@@ -49,6 +52,7 @@ public class TypeController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "typeID") int typeID) {
@@ -57,6 +61,7 @@ public class TypeController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Type> listAll() {
@@ -65,6 +70,7 @@ public class TypeController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Type> findById(@RequestParam(value = "typeID") int typeID) {

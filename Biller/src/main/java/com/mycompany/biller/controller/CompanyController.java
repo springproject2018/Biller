@@ -5,14 +5,15 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Company;
-import com.mycompany.biller.model.Party;
+import com.mycompany.biller.dto.Company;
+import com.mycompany.biller.dto.Party;
 import com.mycompany.biller.resources.CompanyResources;
 import com.mycompany.biller.service.CompanyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,7 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "name") String name, @RequestParam(value = "companyCode") String companyCode) {
@@ -42,8 +44,9 @@ public class CompanyController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/createCompany", method = RequestMethod.POST)
-    public ResponseEntity<CompanyResources> createDepartment(@RequestBody CompanyResources companyResources) {
+    public ResponseEntity<CompanyResources> createCompany(@RequestBody CompanyResources companyResources) {
         System.out.println("*** createCompany ***");
 
         Company company = companyService.createCompany(companyResources.toCompany());
@@ -55,6 +58,7 @@ public class CompanyController {
         return new ResponseEntity<CompanyResources>(companyResources, HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "companyId") int companyId, @RequestParam(value = "companyCode") String companyCode, @RequestParam(value = "name") String name) {
@@ -67,6 +71,7 @@ public class CompanyController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "companyId") int companyId) {
@@ -75,6 +80,7 @@ public class CompanyController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Company> listAll() {
@@ -83,6 +89,7 @@ public class CompanyController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Company> findById(@RequestParam(value = "CompanyId") int CompanyId) {

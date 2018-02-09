@@ -5,7 +5,7 @@
  */
 package com.mycompany.biller.resources;
 
-import com.mycompany.biller.model.Company;
+import com.mycompany.biller.dto.Company;
 import org.springframework.hateoas.ResourceSupport;
 
 /**

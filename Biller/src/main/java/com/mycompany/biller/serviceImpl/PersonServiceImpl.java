@@ -5,8 +5,8 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.DAO.PersonDAO;
-import com.mycompany.biller.model.Person;
+import com.mycompany.biller.dao.PersonDAO;
+import com.mycompany.biller.dto.Person;
 import com.mycompany.biller.service.PersonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,14 +5,14 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.DAO.TypeDAO;
+import com.mycompany.biller.dao.TypeDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.mycompany.biller.DAO.UserRoleDAO;
-import com.mycompany.biller.model.Type;
-import com.mycompany.biller.model.UserRole;
+import com.mycompany.biller.dao.UserRoleDAO;
+import com.mycompany.biller.dto.Type;
+import com.mycompany.biller.dto.UserRole;
 import com.mycompany.biller.service.TypeService;
 import com.mycompany.biller.service.UserRoleService;
 

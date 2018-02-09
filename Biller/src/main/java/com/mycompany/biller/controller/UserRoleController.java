@@ -5,13 +5,14 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.model.Party;
-import com.mycompany.biller.model.RoleGroup;
-import com.mycompany.biller.model.UserLogin;
-import com.mycompany.biller.model.UserRole;
+import com.mycompany.biller.dto.Party;
+import com.mycompany.biller.dto.RoleGroup;
+import com.mycompany.biller.dto.UserLogin;
+import com.mycompany.biller.dto.UserRole;
 import com.mycompany.biller.service.UserRoleService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,7 @@ public class UserRoleController {
     @Autowired
     private UserRoleService userRoleService;
 
+    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
@@ -50,6 +52,7 @@ public class UserRoleController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "userRoleId") int userRoleId,
@@ -73,6 +76,7 @@ public class UserRoleController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "userRoleId") int userRoleId) {
@@ -82,6 +86,7 @@ public class UserRoleController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<UserRole> listAll() {
@@ -90,6 +95,7 @@ public class UserRoleController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<UserRole> findById(@RequestParam(value = "userRoleId") int userRoleId) {

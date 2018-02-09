@@ -5,8 +5,8 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.DAO.PartyTypeDAO;
-import com.mycompany.biller.model.PartyType;
+import com.mycompany.biller.dao.PartyTypeDAO;
+import com.mycompany.biller.dto.PartyType;
 import com.mycompany.biller.service.PartyTypeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

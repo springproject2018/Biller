@@ -5,8 +5,8 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.DAO.RoleGroupDAO;
-import com.mycompany.biller.model.RoleGroup;
+import com.mycompany.biller.dao.RoleGroupDAO;
+import com.mycompany.biller.dto.RoleGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

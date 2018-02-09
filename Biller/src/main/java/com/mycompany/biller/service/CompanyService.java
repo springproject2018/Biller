@@ -5,8 +5,7 @@
  */
 package com.mycompany.biller.service;
 
-import com.mycompany.biller.DAO.*;
-import com.mycompany.biller.model.Company;
+import com.mycompany.biller.dto.Company;
 import java.util.List;
 
 /**
