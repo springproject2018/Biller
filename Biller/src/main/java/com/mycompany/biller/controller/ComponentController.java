@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/component")
 public class ComponentController {
@@ -28,7 +30,6 @@ public class ComponentController {
     @Autowired
     private ComponentService componentService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description) {
@@ -39,7 +40,6 @@ public class ComponentController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "componentId") int componentId, @RequestParam(value = "description") String description) {
@@ -51,7 +51,6 @@ public class ComponentController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "componentId") int componentId) {
@@ -60,7 +59,6 @@ public class ComponentController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Component> listAll() {
@@ -69,7 +67,6 @@ public class ComponentController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Component> findById(@RequestParam(value = "componentId") int componentId) {

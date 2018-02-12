@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/menuRole")
 public class MenuRoleController {
@@ -30,7 +31,6 @@ public class MenuRoleController {
     @Autowired
     private MenuRoleService menuRoleService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
@@ -42,7 +42,6 @@ public class MenuRoleController {
 
         RoleGroup roleGroup = new RoleGroup();//roleGroupId
         roleGroup.setRoleGroupId(menusId);
-        
 
         MenuRole menuRole = new MenuRole();
         menuRole.setDescription(description);
@@ -52,20 +51,18 @@ public class MenuRoleController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "menuRoleId") int menuRoleId,
             @RequestParam(value = "description") String description,
             @RequestParam(value = "menusId") int menusId,
             @RequestParam(value = "roleGroupId") int roleGroupId) {
-        
+
         Menus menus = new Menus();//menusId
         menus.setId(menusId);
 
         RoleGroup roleGroup = new RoleGroup();//roleGroupId
         roleGroup.setRoleGroupId(menusId);
-        
 
         MenuRole menuRole = new MenuRole();
         menuRole.setMenuRoleId(menuRoleId);
@@ -77,7 +74,6 @@ public class MenuRoleController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "menuRoleId") int menuRoleId) {
@@ -86,7 +82,6 @@ public class MenuRoleController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<MenuRole> listAll() {
@@ -95,7 +90,6 @@ public class MenuRoleController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<MenuRole> findById(@RequestParam(value = "menuRoleId") int menuRoleId) {

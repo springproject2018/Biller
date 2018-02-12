@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/party")
 public class PartyController {
@@ -28,7 +29,6 @@ public class PartyController {
     @Autowired
     private PartyService partyService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(
@@ -47,7 +47,6 @@ public class PartyController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "partyId") int partyId,
@@ -66,7 +65,6 @@ public class PartyController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "partyId") int partyId) {
@@ -76,7 +74,6 @@ public class PartyController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Party> listAll() {
@@ -85,7 +82,6 @@ public class PartyController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Party> findById(@RequestParam(value = "partyId") int partyId) {

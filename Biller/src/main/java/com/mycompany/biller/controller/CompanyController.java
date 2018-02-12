@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/company")
 public class CompanyController {
@@ -32,7 +34,6 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "name") String name, @RequestParam(value = "companyCode") String companyCode) {
@@ -44,7 +45,6 @@ public class CompanyController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/createCompany", method = RequestMethod.POST)
     public ResponseEntity<CompanyResources> createCompany(@RequestBody CompanyResources companyResources) {
         System.out.println("*** createCompany ***");
@@ -58,7 +58,6 @@ public class CompanyController {
         return new ResponseEntity<CompanyResources>(companyResources, HttpStatus.CREATED);
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "companyId") int companyId, @RequestParam(value = "companyCode") String companyCode, @RequestParam(value = "name") String name) {
@@ -71,7 +70,6 @@ public class CompanyController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "companyId") int companyId) {
@@ -80,7 +78,6 @@ public class CompanyController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Company> listAll() {
@@ -89,7 +86,6 @@ public class CompanyController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Company> findById(@RequestParam(value = "CompanyId") int CompanyId) {

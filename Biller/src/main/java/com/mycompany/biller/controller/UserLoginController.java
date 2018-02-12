@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Admin
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/userLogin")
 public class UserLoginController {
@@ -29,7 +30,6 @@ public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
 
-    @CrossOrigin
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
     @ResponseBody
     List<Object> checkLogin(@RequestParam(value = "userName") String userName,
@@ -43,7 +43,6 @@ public class UserLoginController {
         }
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "userName") String name,
@@ -64,7 +63,6 @@ public class UserLoginController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "userLoginId") int userLoginId,
@@ -86,7 +84,6 @@ public class UserLoginController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "userLoginId") int userId) {
@@ -96,7 +93,6 @@ public class UserLoginController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<UserLogin> listAll() {
@@ -105,7 +101,6 @@ public class UserLoginController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<UserLogin> findById(@RequestParam(value = "userLoginId") int userId) {

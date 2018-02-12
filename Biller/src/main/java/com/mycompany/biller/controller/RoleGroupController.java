@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/roleGroup")
 public class RoleGroupController {
@@ -29,7 +30,6 @@ public class RoleGroupController {
     @Autowired
     private RoleGroupService roleGroupService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description) {
@@ -40,7 +40,6 @@ public class RoleGroupController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "roleGroupId") int roleGroupId,
@@ -54,7 +53,6 @@ public class RoleGroupController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "roleGroupId") int roleGroupId) {
@@ -63,7 +61,6 @@ public class RoleGroupController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<RoleGroup> listAll() {
@@ -72,7 +69,6 @@ public class RoleGroupController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<RoleGroup> findById(@RequestParam(value = "roleGroupId") int roleGroupId) {

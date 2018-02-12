@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Admin
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/userRole")
 public class UserRoleController {
@@ -30,7 +31,6 @@ public class UserRoleController {
     @Autowired
     private UserRoleService userRoleService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
@@ -52,7 +52,6 @@ public class UserRoleController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "userRoleId") int userRoleId,
@@ -76,7 +75,6 @@ public class UserRoleController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "userRoleId") int userRoleId) {
@@ -86,7 +84,6 @@ public class UserRoleController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<UserRole> listAll() {
@@ -95,7 +92,6 @@ public class UserRoleController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<UserRole> findById(@RequestParam(value = "userRoleId") int userRoleId) {

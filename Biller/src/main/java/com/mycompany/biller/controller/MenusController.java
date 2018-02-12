@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/menus")
 public class MenusController {
@@ -30,7 +31,6 @@ public class MenusController {
     @Autowired
     private MenusService menusService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
@@ -46,7 +46,6 @@ public class MenusController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "menusId") int menusId,
@@ -65,7 +64,6 @@ public class MenusController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "menusId") int menusId) {
@@ -74,7 +72,6 @@ public class MenusController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Menus> listAll() {
@@ -83,7 +80,6 @@ public class MenusController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Menus> findById(@RequestParam(value = "menusId") int menusId) {

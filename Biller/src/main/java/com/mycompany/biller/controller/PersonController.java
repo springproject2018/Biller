@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/person")
 public class PersonController {
@@ -30,7 +31,6 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "fisrtName") String fisrtName,
@@ -52,7 +52,6 @@ public class PersonController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "personId") int personId,
@@ -77,7 +76,6 @@ public class PersonController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "personId") int personId) {
@@ -86,7 +84,6 @@ public class PersonController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Person> listAll() {
@@ -95,7 +92,6 @@ public class PersonController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Person> findById(@RequestParam(value = "personId") int personId) {

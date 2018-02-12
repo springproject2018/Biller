@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/partyType")
 public class PartyTypeController {
@@ -31,7 +32,6 @@ public class PartyTypeController {
     @Autowired
     private PartyTypeService partyTypeService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
@@ -52,7 +52,6 @@ public class PartyTypeController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "partyTypeId") int partyTypeId,
@@ -76,7 +75,6 @@ public class PartyTypeController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "partyTypeId") int partyTypeId) {
@@ -93,7 +91,6 @@ public class PartyTypeController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<PartyType> findById(@RequestParam(value = "partyTypeId") int partyTypeId) {

@@ -84,14 +84,15 @@ public class UserLoginDAOImpl implements UserLoginDAO {
 
     @Override
     public boolean checkLogin(String userName, String password) {
-        String selectQuery = "FROM UserLogin WHERE userName = :userName AND password=:password";
+        String selectQuery = "FROM UserLogin WHERE userName = :userName AND password=:password AND enabled=:enabled";
         List list = sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
                 .setParameter("userName", userName)
                 .setParameter("password", password)
+                .setParameter("enabled", "Y")
                 .list();
-        System.out.println("list " + list);
+        
         if (list.isEmpty()) {
             return false;
         } else {

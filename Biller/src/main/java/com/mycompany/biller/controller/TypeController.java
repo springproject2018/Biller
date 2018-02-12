@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ismail
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/type")
 public class TypeController {
@@ -27,7 +28,6 @@ public class TypeController {
     @Autowired
     private TypeService typeService;
 
-    @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description) {
@@ -38,7 +38,6 @@ public class TypeController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
     String update(@RequestParam(value = "typeID") int typeID,
@@ -52,7 +51,6 @@ public class TypeController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
     String delete(@RequestParam(value = "typeID") int typeID) {
@@ -61,7 +59,6 @@ public class TypeController {
         return "OK";
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Type> listAll() {
@@ -70,7 +67,6 @@ public class TypeController {
 
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
     public List<Type> findById(@RequestParam(value = "typeID") int typeID) {
