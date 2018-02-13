@@ -10,6 +10,7 @@ import com.mycompany.biller.dto.Company;
 import com.mycompany.biller.service.CompanyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,9 +25,6 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyDAO companyDAO;
 
-    public void setCompanyDAO(CompanyDAO companyDAO) {
-        this.companyDAO = companyDAO;
-    }
 
     @Override
     public void addCompany(Company company) {
