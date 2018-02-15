@@ -6,6 +6,7 @@
 package com.mycompany.biller.service;
 
 import com.mycompany.biller.dto.UserLogin;
+import com.mycompany.biller.resources.UserLoginRoleQuery;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +27,8 @@ public interface UserLoginService {
     public List<UserLogin> findById(int id);
 
     public List<Object> usrerLoginRole(String userName);
-    
-    public boolean checkLogin (String userName, String password);
 
+    public boolean checkLogin(String userName, String password);
+
+    public List<UserLoginRoleQuery> userLoginRoleQuery(String userName);
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.mycompany.biller.dao.UserLoginDAO;
+import com.mycompany.biller.resources.UserLoginRoleQuery;
 import com.mycompany.biller.service.UserLoginService;
 import java.util.Map;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,7 +26,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Autowired
     private UserLoginDAO userLoginDAO;
-    
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -57,15 +58,20 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public List<Object> usrerLoginRole(String userName) {
-       return userLoginDAO.usrerLoginRole( userName);
+        return userLoginDAO.usrerLoginRole(userName);
     }
 
     @Override
     public boolean checkLogin(String userName, String password) {
-        
+
         return userLoginDAO.checkLogin(userName, password);
 //                return userLoginDAO.checkLogin(userName, passwordEncoder.encode(password));
 
+    }
+
+    @Override
+    public List<UserLoginRoleQuery> userLoginRoleQuery(String userName) {
+        return userLoginDAO.userLoginRoleQuery(userName);
     }
 
 }

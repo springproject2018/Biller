@@ -6,8 +6,8 @@
 package com.mycompany.biller.dao;
 
 import com.mycompany.biller.dto.UserLogin;
+import com.mycompany.biller.resources.UserLoginRoleQuery;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -28,5 +28,7 @@ public interface UserLoginDAO {
     public List<Object> usrerLoginRole(String userName);
 
     public boolean checkLogin(String userName, String password);
+
+    public List<UserLoginRoleQuery> userLoginRoleQuery(String userName);
 
 }

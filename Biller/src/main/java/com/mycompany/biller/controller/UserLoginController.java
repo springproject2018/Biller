@@ -7,10 +7,13 @@ package com.mycompany.biller.controller;
 
 import com.mycompany.biller.dto.Party;
 import com.mycompany.biller.dto.UserLogin;
+import com.mycompany.biller.resources.UserLoginRoleQuery;
 import com.mycompany.biller.service.UserLoginService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,13 +35,17 @@ public class UserLoginController {
 
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
     @ResponseBody
-    List<Object> checkLogin(@RequestParam(value = "userName") String userName,
+    List<UserLoginRoleQuery> checkLogin(@RequestParam(value = "userName") String userName,
             @RequestParam(value = "password") String password) {
         if (userLoginService.checkLogin(userName, password)) {
-            return userLoginService.usrerLoginRole(userName);
+//            return userLoginService.usrerLoginRole(userName);
+            return (List<UserLoginRoleQuery>) userLoginService.userLoginRoleQuery(userName);
         } else {
-            List<Object> list = new ArrayList<Object>();
-            list.add("Invalid");
+            UserLoginRoleQuery userLoginRoleQuery = new UserLoginRoleQuery();
+            userLoginRoleQuery.setEnabled("Invalid");
+            userLoginRoleQuery.setUserName(userName);
+            List<UserLoginRoleQuery> list = new ArrayList<UserLoginRoleQuery>();
+            list.add(userLoginRoleQuery);
             return list;
         }
     }
@@ -106,5 +113,14 @@ public class UserLoginController {
     public List<UserLogin> findById(@RequestParam(value = "userLoginId") int userId) {
         return userLoginService.findById(userId);
 
+    }
+
+    @RequestMapping(value = "/query", method = RequestMethod.POST)
+    public ResponseEntity<List<UserLoginRoleQuery>> query(@RequestParam(value = "userName") String userName) {
+        System.out.println("*** UserLoginRoleQuery service ***");
+    
+        List<UserLoginRoleQuery> userLoginRoleQuery = userLoginService.userLoginRoleQuery(userName);
+
+        return new ResponseEntity<List<UserLoginRoleQuery>>(userLoginRoleQuery, HttpStatus.OK);
     }
 }

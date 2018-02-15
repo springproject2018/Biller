@@ -12,8 +12,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.mycompany.biller.dao.UserLoginDAO;
-import java.util.HashMap;
-import java.util.Map;
+import com.mycompany.biller.resources.UserLoginRoleQuery;
+import org.hibernate.transform.Transformers;
 
 /**
  *
@@ -91,12 +91,39 @@ public class UserLoginDAOImpl implements UserLoginDAO {
                 .setParameter("userName", userName)
                 .setParameter("password", password)
                 .list();
-        
+
         if (list.isEmpty()) {
             return false;
         } else {
             return true;
         }
+    }
+
+    @Override
+    public List<UserLoginRoleQuery> userLoginRoleQuery(String userName) {
+
+        List<UserLoginRoleQuery> resultList = sessionFactory.getCurrentSession()
+                .createSQLQuery("select UL.USER_LOGIN_ID AS userLoginId ,UL.USER_NAME AS userName ,MU.DESCRIPTIN AS description ,COM.DESCRIPTIN descriptionCom\n"
+                        + "from   USER_LOGIN UL ,USER_ROLE UR,ROLE_GROUP RG,MENU_ROLE MR,MENUS MU,COMPONENT COM\n"
+                        + "WHERE UL.USER_NAME = :userName\n"
+                        + "AND UL.USER_LOGIN_ID = UR.USERLOGIN_USER_LOGIN_ID\n"
+                        + "AND UR.ROLEGROUP_ROLE_GROUP_ID = RG.ROLE_GROUP_ID\n"
+                        + "AND RG.ROLE_GROUP_ID = MR.ROLEGROUP_ROLE_GROUP_ID\n"
+                        + "AND MR.MENUS_MENUS_ID = MU.MENUS_ID\n"
+                        + "AND MU.COMPONENT_COMPONENT_ID = COM.COMPONENT_ID")
+                .addScalar("userLoginId")
+                .addScalar("userName")
+                .addScalar("description")
+                .addScalar("descriptionCom")
+                .setResultTransformer(Transformers.aliasToBean(UserLoginRoleQuery.class))
+                .setParameter("userName", userName)
+                .list();
+        if (resultList.size() > 0) {
+            System.out.println("** resultList " + resultList);
+            return (List<UserLoginRoleQuery>) resultList;
+        }
+
+        return null;
     }
 
 }
