@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.mycompany.biller.dao.UserLoginDAO;
 import com.mycompany.biller.resources.UserLoginRoleQuery;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.hibernate.transform.Transformers;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -24,6 +27,9 @@ public class UserLoginDAOImpl implements UserLoginDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void addUserLogin(UserLogin userLogin) {
@@ -84,18 +90,18 @@ public class UserLoginDAOImpl implements UserLoginDAO {
 
     @Override
     public boolean checkLogin(String userName, String password) {
-        String selectQuery = "FROM UserLogin WHERE userName = :userName AND password=:password";
-        List list = sessionFactory
+        String selectQuery = "FROM UserLogin WHERE userName = :userName";
+        List<UserLogin> list = sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
                 .setParameter("userName", userName)
-                .setParameter("password", password)
-                .list();
+                //                .setParameter("password", password)
+                .getResultList();
 
         if (list.isEmpty()) {
             return false;
         } else {
-            return true;
+            return passwordEncoder.matches(password, list.get(0).getPassword());
         }
     }
 

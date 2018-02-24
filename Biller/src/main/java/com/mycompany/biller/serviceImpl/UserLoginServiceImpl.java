@@ -32,7 +32,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public void addUserLogin(UserLogin userLogin) {
-//        userLogin.setPassword(passwordEncoder.encode(userLogin.getPassword()));
+        userLogin.setPassword(passwordEncoder.encode(userLogin.getPassword()));
         userLoginDAO.addUserLogin(userLogin);
     }
 
