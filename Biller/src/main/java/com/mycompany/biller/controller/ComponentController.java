@@ -33,7 +33,6 @@ public class ComponentController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description) {
-
         Component component = new Component();
         component.setDescription(description);
         componentService.addComponent(component);
@@ -62,9 +61,7 @@ public class ComponentController {
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
     public List<Component> listAll() {
-
         return componentService.listAllComponent();
-
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
