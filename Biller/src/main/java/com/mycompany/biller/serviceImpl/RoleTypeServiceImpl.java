@@ -5,16 +5,16 @@
  */
 package com.mycompany.biller.serviceImpl;
 
-import com.mycompany.biller.dao.TypeDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.mycompany.biller.dao.UserRoleDAO;
-import com.mycompany.biller.dto.Type;
+import com.mycompany.biller.dto.RoleType;
 import com.mycompany.biller.dto.UserRole;
-import com.mycompany.biller.service.TypeService;
 import com.mycompany.biller.service.UserRoleService;
+import com.mycompany.biller.dao.RoleTypeDAO;
+import com.mycompany.biller.service.RoleTypeService;
 
 /**
  *
@@ -22,34 +22,34 @@ import com.mycompany.biller.service.UserRoleService;
  */
 @Service
 @Transactional
-public class TypeServiceImpl implements TypeService {
+public class RoleTypeServiceImpl implements RoleTypeService {
 
     @Autowired
-    private TypeDAO typeDAO;
+    private RoleTypeDAO typeDAO;
 
     @Override
-    public void addType(Type type) {
-       typeDAO.addType(type);
+    public void addRoleType(RoleType type) {
+       typeDAO.addRoleType(type);
     }
 
     @Override
-    public void updateType(Type type) {
-        typeDAO.updateType(type);
+    public void updateRoleType(RoleType type) {
+        typeDAO.updateRoleType(type);
     }
 
     @Override
-    public void deleteType(int id) {
-       typeDAO.deleteType(id);
+    public void deleteRoleType(int id) {
+       typeDAO.deleteRoleType(id);
     }
 
     @Override
-    public List<Type> listAllType() {
-        return typeDAO.listAllType();
+    public List<RoleType> listAllRoleType() {
+        return typeDAO.listAllRoleType();
     }
 
     @Override
-    public List<Type> findById(int id) {
-        return typeDAO.findById(id);
+    public List<RoleType> findRoleTypeById(int id) {
+        return typeDAO.findRoleTypeById(id);
     }
 
 

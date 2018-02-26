@@ -8,9 +8,8 @@ package com.mycompany.biller.controller;
 import com.mycompany.biller.dto.Component;
 import com.mycompany.biller.dto.Menus;
 import com.mycompany.biller.dto.Party;
-import com.mycompany.biller.dto.PartyType;
-import com.mycompany.biller.dto.Type;
-import com.mycompany.biller.service.PartyTypeService;
+import com.mycompany.biller.dto.PartyRole;
+import com.mycompany.biller.dto.RoleType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.mycompany.biller.service.PartyRoleService;
 
 /**
  *
@@ -26,75 +26,75 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/partyType")
-public class PartyTypeController {
+@RequestMapping(value = "/partyRole")
+public class PartyRoleController {
 
     @Autowired
-    private PartyTypeService partyTypeService;
+    private PartyRoleService partyRoleService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "description") String description,
             @RequestParam(value = "partyId") int partyId,
-            @RequestParam(value = "typeId") int typeId) {
+            @RequestParam(value = "roleTypeID") int roleTypeID) {
 
         Party party = new Party();
         party.setPartyId(partyId);
 
-        Type type = new Type();
-        type.setTypeID(typeId);
+        RoleType roleType = new RoleType();
+        roleType.setRoleTypeID(roleTypeID);
 
-        PartyType partyType = new PartyType();
-        partyType.setDescription(description);
-        partyType.setParty(party);
-        partyType.setType(type);
-        partyTypeService.addPartyType(partyType);
+        PartyRole partyRole = new PartyRole();
+        partyRole.setDescription(description);
+        partyRole.setParty(party);
+        partyRole.setRoleType(roleType);
+        partyRoleService.addPartyRole(partyRole);
         return "OK";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "partyTypeId") int partyTypeId,
+    String update(@RequestParam(value = "partyRoleId") int partyRoleId,
             @RequestParam(value = "description") String description,
             @RequestParam(value = "partyId") int partyId,
-            @RequestParam(value = "typeID") int typeID) {
+            @RequestParam(value = "roleTypeID") int roleTypeID) {
 
         Party party = new Party();
         party.setPartyId(partyId);
 
-        Type type = new Type();
-        type.setTypeID(typeID);
+        RoleType roleType = new RoleType();
+        roleType.setRoleTypeID(roleTypeID);
 
-        PartyType partyType = new PartyType();
-        partyType.setPartyTypeId(partyTypeId);
-        partyType.setDescription(description);
-        partyType.setParty(party);
-        partyType.setType(type);
-        partyTypeService.updatePartyType(partyType);
+        PartyRole partyRole = new PartyRole();
+        partyRole.setPartyRoleId(partyRoleId);
+        partyRole.setDescription(description);
+        partyRole.setParty(party);
+        partyRole.setRoleType(roleType);
+        partyRoleService.updatePartyRole(partyRole);
         return "OK";
 
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody
-    String delete(@RequestParam(value = "partyTypeId") int partyTypeId) {
+    String delete(@RequestParam(value = "partyRoleId") int partyRoleId) {
 
-        partyTypeService.deletePartyType(partyTypeId);
+        partyRoleService.deletePartyRole(partyRoleId);
         return "OK";
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
-    public List<PartyType> listAll() {
+    public List<PartyRole> listAll() {
 
-        return partyTypeService.listAllPartyType();
+        return partyRoleService.listAllPartyRole();
 
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
-    public List<PartyType> findById(@RequestParam(value = "partyTypeId") int partyTypeId) {
-        return partyTypeService.findById(partyTypeId);
+    public List<PartyRole> findById(@RequestParam(value = "partyRoleId") int partyRoleId) {
+        return partyRoleService.findPartyRoleById(partyRoleId);
 
     }
 

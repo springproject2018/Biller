@@ -17,25 +17,29 @@ import javax.persistence.Table;
  * @author DELL
  */
 @Entity
-@Table(name = "TYPE")
-public class Type {
+@Table(name = "ROLE_TYPE")
+public class RoleType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TYPE_ID")
-    private int typeID;
+    @Column(name = "ROLE_TYPE_ID")
+    private int roleTypeID;
+
+    @Column(name = "PARENT_ROLE_TYPE_ID")
+    private String parentRoleTypeID;
 
     @Column(name = "DESCRIPTIN")
     private String description;
 
-    public int getTypeID() {
-        return typeID;
+    public int getRoleTypeID() {
+        return roleTypeID;
     }
 
-    public void setTypeID(int typeID) {
-        this.typeID = typeID;
+    public void setRoleTypeID(int roleTypeID) {
+        this.roleTypeID = roleTypeID;
     }
 
+ 
     public String getDescription() {
         return description;
     }
@@ -44,11 +48,19 @@ public class Type {
         this.description = description;
     }
 
+    public String getParentRoleTypeID() {
+        return parentRoleTypeID;
+    }
+
+    public void setParentRoleTypeID(String parentRoleTypeID) {
+        this.parentRoleTypeID = parentRoleTypeID;
+    }
+
     @Override
     public String toString() {
-        return "Type{" + "typeID=" + typeID + ", description=" + description + '}';
+        return "RoleType{" + "roleTypeID=" + roleTypeID + ", parentRoleTypeID=" + parentRoleTypeID + ", description=" + description + '}';
     }
 
 
-
+   
 }

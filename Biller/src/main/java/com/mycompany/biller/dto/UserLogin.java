@@ -41,7 +41,8 @@ public class UserLogin {
     @Column(name = "ENABLED")
     private char enabled; // Y or N
 
-    @ManyToOne
+//    @ManyToOne
+    @OneToOne
     private Party party;
 
     public int getUserLoginId() {

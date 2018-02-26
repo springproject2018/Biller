@@ -5,8 +5,7 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.dto.Type;
-import com.mycompany.biller.service.TypeService;
+import com.mycompany.biller.dto.RoleType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.mycompany.biller.service.RoleTypeService;
 
 /**
  *
@@ -22,31 +22,35 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/type")
-public class TypeController {
+@RequestMapping(value = "/roleType")
+public class RoleTypeController {
 
     @Autowired
-    private TypeService typeService;
+    private RoleTypeService typeService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "description") String description) {
+    String add(@RequestParam(value = "parentRoleTypeID") String parentRoleTypeID,
+            @RequestParam(value = "description") String description) {
 
-        Type type = new Type();
+        RoleType type = new RoleType();
+        type.setParentRoleTypeID(parentRoleTypeID);
         type.setDescription(description);
-        typeService.addType(type);
+        typeService.addRoleType(type);
         return "OK";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody
-    String update(@RequestParam(value = "typeID") int typeID,
+    String update(@RequestParam(value = "roleTypeID") int roleTypeID,
+            @RequestParam(value = "parentRoleTypeID") String parentRoleTypeID,
             @RequestParam(value = "description") String description) {
 
-        Type type = new Type();
-        type.setTypeID(typeID);
+        RoleType type = new RoleType();
+        type.setRoleTypeID(roleTypeID);
+        type.setParentRoleTypeID(parentRoleTypeID);
         type.setDescription(description);
-        typeService.updateType(type);
+        typeService.updateRoleType(type);
         return "OK";
 
     }
@@ -55,22 +59,22 @@ public class TypeController {
     public @ResponseBody
     String delete(@RequestParam(value = "typeID") int typeID) {
 
-        typeService.deleteType(typeID);
+        typeService.deleteRoleType(typeID);
         return "OK";
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
-    public List<Type> listAll() {
+    public List<RoleType> listAll() {
 
-        return typeService.listAllType();
+        return typeService.listAllRoleType();
 
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
     @ResponseBody
-    public List<Type> findById(@RequestParam(value = "typeID") int typeID) {
-        return typeService.findById(typeID);
+    public List<RoleType> findById(@RequestParam(value = "roleTypeID") int roleTypeID) {
+        return typeService.findRoleTypeById(roleTypeID);
 
     }
 

@@ -18,13 +18,13 @@ import javax.persistence.Table;
  * @author Admin
  */
 @Entity
-@Table(name = "PARTY_TYPE")
-public class PartyType {
+@Table(name = "PARTY_ROLE")
+public class PartyRole {
 
     @Id
-    @Column(name = "PARTY_TYPE_ID")
+    @Column(name = "PARTY_ROLE_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int partyTypeId;
+    private int partyRoleId;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -33,7 +33,7 @@ public class PartyType {
     private Party Party;
 
     @ManyToOne
-    private Type type;
+    private RoleType roleType;
 
     public Party getParty() {
         return Party;
@@ -43,21 +43,23 @@ public class PartyType {
         this.Party = Party;
     }
 
-    public Type getType() {
-        return type;
+    public RoleType getRoleType() {
+        return roleType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
     }
 
-    public int getPartyTypeId() {
-        return partyTypeId;
+    public int getPartyRoleId() {
+        return partyRoleId;
     }
 
-    public void setPartyTypeId(int partyTypeId) {
-        this.partyTypeId = partyTypeId;
+    public void setPartyRoleId(int partyRoleId) {
+        this.partyRoleId = partyRoleId;
     }
+
+
 
     public String getDescription() {
         return description;
@@ -69,7 +71,7 @@ public class PartyType {
 
     @Override
     public String toString() {
-        return "PartyType{" + "partyTypeId=" + partyTypeId + ", description=" + description + ", Party=" + Party + ", type=" + type + '}';
+        return "PartyType{" + "partyRoleId=" + partyRoleId + ", description=" + description + ", Party=" + Party + ", roleType=" + roleType + '}';
     }
 
 }

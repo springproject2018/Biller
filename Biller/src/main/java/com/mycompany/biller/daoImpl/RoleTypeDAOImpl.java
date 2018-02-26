@@ -5,14 +5,14 @@
  */
 package com.mycompany.biller.daoImpl;
 
-import com.mycompany.biller.dao.PartyTypeDAO;
-import com.mycompany.biller.dto.Party;
-import com.mycompany.biller.dto.PartyType;
+import com.mycompany.biller.dto.RoleGroup;
+import com.mycompany.biller.dto.RoleType;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.mycompany.biller.dao.RoleTypeDAO;
 
 /**
  *
@@ -20,47 +20,47 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public class PartyTypeDAOImpl implements PartyTypeDAO {
+public class RoleTypeDAOImpl implements RoleTypeDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void addPartyType(PartyType partyType) {
+    public void addRoleType(RoleType type) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(partyType);
+        session.persist(type);
     }
 
     @Override
-    public void updatePartyType(PartyType partyType) {
+    public void updateRoleType(RoleType type) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(partyType);
+        session.update(type);
     }
 
     @Override
-    public void deletePartyType(int partyTypeId) {
+    public void deleteRoleType(int id) {
         Session session = sessionFactory.getCurrentSession();
-        PartyType partyType = (PartyType) session.load(PartyType.class, new Integer(partyTypeId));
-        if (partyType != null) {
-            session.delete(partyType);
+        RoleType type = (RoleType) session.load(RoleType.class, new Integer(id));
+        if (type != null) {
+            session.delete(type);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<PartyType> listAllPartyType() {
+    public List<RoleType> listAllRoleType() {
         Session session = sessionFactory.getCurrentSession();
-        List<PartyType> partyTypeList = session.createQuery("from PartyType").list();
-        return partyTypeList;
+        List<RoleType> TypeList = session.createQuery("from RoleType").list();
+        return TypeList;
     }
 
     @Override
-    public List<PartyType> findById(int partyTypeId) {
-        String selectQuery = "FROM PartyType WHERE PARTY_TYPE_ID = :partyTypeId";
+    public List<RoleType> findRoleTypeById(int id) {
+        String selectQuery = "FROM RoleType WHERE ROLE_TYPE_ID = :id";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
-                .setParameter("partyTypeId", partyTypeId)
+                .setParameter("id", id)
                 .list();
     }
 

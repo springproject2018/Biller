@@ -6,7 +6,7 @@
 package com.mycompany.biller.daoImpl;
 
 import com.mycompany.biller.dao.PersonDAO;
-import com.mycompany.biller.dto.PartyType;
+import com.mycompany.biller.dto.PartyRole;
 import com.mycompany.biller.dto.Person;
 import java.util.List;
 import org.hibernate.Session;

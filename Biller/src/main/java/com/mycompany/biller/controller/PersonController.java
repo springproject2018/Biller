@@ -6,9 +6,9 @@
 package com.mycompany.biller.controller;
 
 import com.mycompany.biller.dto.Party;
-import com.mycompany.biller.dto.PartyType;
+import com.mycompany.biller.dto.PartyRole;
 import com.mycompany.biller.dto.Person;
-import com.mycompany.biller.dto.Type;
+import com.mycompany.biller.dto.RoleType;
 import com.mycompany.biller.service.PersonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
