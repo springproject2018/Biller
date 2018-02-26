@@ -30,9 +30,9 @@ public class RoleTypeController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "parentRoleTypeID") String parentRoleTypeID,
+    String add(@RequestParam(value = "parentRoleTypeID", required = false) String parentRoleTypeID,
             @RequestParam(value = "description") String description) {
-
+        System.out.println("** parentRoleTypeID " + parentRoleTypeID);
         RoleType type = new RoleType();
         type.setParentRoleTypeID(parentRoleTypeID);
         type.setDescription(description);
