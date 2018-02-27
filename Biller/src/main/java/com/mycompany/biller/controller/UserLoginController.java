@@ -52,7 +52,8 @@ public class UserLoginController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "userName") String name,
+    String add(
+            @RequestParam(value = "userName") String name,
             @RequestParam(value = "password") String password,
             @RequestParam(value = "enabled") char enabled,
             @RequestParam(value = "partyId") int partyID) {
@@ -118,7 +119,7 @@ public class UserLoginController {
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     public ResponseEntity<List<UserLoginRoleQuery>> query(@RequestParam(value = "userName") String userName) {
         System.out.println("*** UserLoginRoleQuery service ***");
-    
+
         List<UserLoginRoleQuery> userLoginRoleQuery = userLoginService.userLoginRoleQuery(userName);
 
         return new ResponseEntity<List<UserLoginRoleQuery>>(userLoginRoleQuery, HttpStatus.OK);

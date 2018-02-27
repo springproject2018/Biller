@@ -22,7 +22,7 @@ public class HibernateConfig {
 
     // Change the below based on the DBMS you choose
     //Oracle DataBase
-	private final static String DATABASE_URL = "jdbc:oracle:thin:@127.0.0.1:1521/TestDB";
+	private final static String DATABASE_URL = "jdbc:oracle:thin:@192.168.8.108:1521/TestDB";
 	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.OracleDialect";
 	private final static String DATABASE_USERNAME = "TestDB";
@@ -30,9 +30,9 @@ public class HibernateConfig {
         
         
     // MySql DataBase
-//    private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/BillerDB1";
+//    private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/BillerDB";
 //    private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-//    private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
+//    private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
 //    private final static String DATABASE_USERNAME = "root";
 //    private final static String DATABASE_PASSWORD = "root";
 
