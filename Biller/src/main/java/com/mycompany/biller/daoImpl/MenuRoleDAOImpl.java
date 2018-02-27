@@ -6,7 +6,7 @@
 package com.mycompany.biller.daoImpl;
 
 import com.mycompany.biller.dao.MenuRoleDAO;
-import com.mycompany.biller.dto.Company;
+import com.mycompany.biller.dto.PartyGroup;
 import com.mycompany.biller.dto.MenuRole;
 import com.mycompany.biller.dto.Party;
 import java.util.List;

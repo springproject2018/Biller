@@ -29,14 +29,19 @@ public class Party {
     @Column(name = "PARTY_CODE")
     private String partyCode;
 
+    @Column(name = "PARTY_TYPE")
+    private String partyType;
+    // PARTY_GROUP => PartyGroup (biller)
+    // PERSON => customer or any  
+
     @Column(name = "DESCRIPTIN")
     private String description;
 
     @Column(name = "PARENT_PARTY_ID")
-    private String parentPartyId;
+    private int parentPartyId;
 
     @OneToOne
-    private Company company;
+    private PartyGroup partyGroup;
 
     public String getDescription() {
         return description;
@@ -46,12 +51,20 @@ public class Party {
         this.description = description;
     }
 
-    public Company getCompany() {
-        return company;
+    public int getParentPartyId() {
+        return parentPartyId;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setParentPartyId(int parentPartyId) {
+        this.parentPartyId = parentPartyId;
+    }
+
+    public PartyGroup getPartyGroup() {
+        return partyGroup;
+    }
+
+    public void setPartyGroup(PartyGroup partyGroup) {
+        this.partyGroup = partyGroup;
     }
 
     public int getPartyId() {
@@ -66,11 +79,11 @@ public class Party {
         return partyCode;
     }
 
-    public String getParentpartyId() {
+    public int getParentpartyId() {
         return parentPartyId;
     }
 
-    public void setParentpartyId(String parentPartyId) {
+    public void setParentpartyId(int parentPartyId) {
         this.parentPartyId = parentPartyId;
     }
 
@@ -80,7 +93,15 @@ public class Party {
 
     @Override
     public String toString() {
-        return "Party{" + "partyId=" + partyId + ", partyCode=" + partyCode + ", description=" + description + ", parentPartyId=" + parentPartyId + ", company=" + company + '}';
+        return "Party{" + "partyId=" + partyId + ", partyCode=" + partyCode + ", partyType=" + partyType + ", description=" + description + ", parentPartyId=" + parentPartyId + ", partyGroup=" + partyGroup + '}';
+    }
+
+    public String getPartyType() {
+        return partyType;
+    }
+
+    public void setPartyType(String partyType) {
+        this.partyType = partyType;
     }
 
 }

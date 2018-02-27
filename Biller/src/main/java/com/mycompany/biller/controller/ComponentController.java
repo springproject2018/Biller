@@ -5,7 +5,7 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.dto.Company;
+import com.mycompany.biller.dto.PartyGroup;
 import com.mycompany.biller.dto.Component;
 import com.mycompany.biller.service.ComponentService;
 import java.util.List;

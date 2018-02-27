@@ -5,8 +5,7 @@
  */
 package com.mycompany.biller.daoImpl;
 
-import com.mycompany.biller.dao.CompanyDAO;
-import com.mycompany.biller.dto.Company;
+import com.mycompany.biller.dto.PartyGroup;
 import com.mycompany.biller.dto.Party;
 import java.util.List;
 import org.hibernate.Session;
@@ -15,63 +14,64 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import com.mycompany.biller.dao.PartyGroupDAO;
 
 /**
  *
  * @author ismail
  */
 @Repository
-public class CompanyDAOImpl implements CompanyDAO {
+public class PartyGroupDAOImpl implements PartyGroupDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void addCompany(Company company) {
+    public void addPartyGroup(PartyGroup partyGroup) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(company);
+        session.persist(partyGroup);
     }
 
     @Override
-    public void updateCompany(Company company) {
+    public void updatePartyGroup(PartyGroup partyGroup) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(company);
+        session.update(partyGroup);
     }
 
     @Override
-    public void deleteCompany(int companyId) {
+    public void deletePartyGroup(int partyGroupId) {
         Session session = sessionFactory.getCurrentSession();
-        Company company = (Company) session.load(Company.class, new Integer(companyId));
-        if (company != null) {
-            session.delete(company);
+        PartyGroup partyGroup = (PartyGroup) session.load(PartyGroup.class, new Integer(partyGroupId));
+        if (partyGroup != null) {
+            session.delete(partyGroup);
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Company> listAllCompany() {
+    public List<PartyGroup> listAllPartyGroup() {
         Session session = sessionFactory.getCurrentSession();
-        List<Company> companyList = session.createQuery("from Company").list();
-        return companyList;
+        List<PartyGroup> partyGroups = session.createQuery("from PartyGroup").list();
+        return partyGroups;
     }
 
     @Override
-    public List<Company> findById(int companyId) {
-        String selectQuery = "FROM Company WHERE COMPANY_ID = :companyId";
+    public List<PartyGroup> findPartyGroupById(int partyGroupId) {
+        String selectQuery = "FROM PartyGroup WHERE PARTY_GROUP_ID = :partyGroupId";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
-                .setParameter("companyId", companyId)
+                .setParameter("partyGroupId", partyGroupId)
                 .list();
     }
 
     @Override
-    public Company createCompany(Company company) {
-        int id = (int) sessionFactory.getCurrentSession().save(company);
+    public PartyGroup createPartyGroup(PartyGroup partyGroup) {
+        int id = (int) sessionFactory.getCurrentSession().save(partyGroup);
 
-        company.setCompanyId(id);
+        partyGroup.setPartyGroupId(id);
 
-        return company;
+        return partyGroup;
     }
 
 }

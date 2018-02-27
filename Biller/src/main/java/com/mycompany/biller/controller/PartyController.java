@@ -5,7 +5,7 @@
  */
 package com.mycompany.biller.controller;
 
-import com.mycompany.biller.dto.Company;
+import com.mycompany.biller.dto.PartyGroup;
 import com.mycompany.biller.dto.Party;
 import com.mycompany.biller.service.PartyService;
 import java.util.List;
@@ -31,18 +31,21 @@ public class PartyController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(
-            @RequestParam(value = "desc") String desc,
+    String add(@RequestParam(value = "desc") String desc,
+            @RequestParam(value = "parentPartyId") int parentPartyId,
             @RequestParam(value = "partyCode") String partyCode,
-            @RequestParam(value = "comId") int comId) {
+            @RequestParam(value = "partyType") String partyType,
+            @RequestParam(value = "comId") int partyGroupId) {
 
-        Company company = new Company();
-        company.setCompanyId(comId);
+        PartyGroup partyGroup = new PartyGroup();
+        partyGroup.setPartyGroupId(partyGroupId);
 
         Party party = new Party();
         party.setDescription(desc);
+        party.setParentpartyId(parentPartyId);
+        party.setPartyType(partyType);
         party.setPartyCode(partyCode);
-        party.setCompany(company);
+        party.setPartyGroup(partyGroup);
         partyService.addParty(party);
         return "OK";
     }
@@ -51,16 +54,21 @@ public class PartyController {
     public @ResponseBody
     String update(@RequestParam(value = "partyId") int partyId,
             @RequestParam(value = "desc") String desc,
+            @RequestParam(value = "parentPartyId") int parentPartyId,
+            @RequestParam(value = "partyType") String partyType,
             @RequestParam(value = "partyCode") String partyCode,
-            @RequestParam(value = "comId") int comId) {
-        Company company = new Company();
-        company.setCompanyId(comId);
+            @RequestParam(value = "comId") int partyGroupId) {
+
+        PartyGroup partyGroup = new PartyGroup();
+        partyGroup.setPartyGroupId(partyGroupId);
 
         Party party = new Party();
         party.setPartyId(partyId);
         party.setDescription(desc);
+        party.setParentpartyId(parentPartyId);
         party.setPartyCode(partyCode);
-        party.setCompany(company);
+        party.setPartyType(partyType);
+        party.setPartyGroup(partyGroup);
         partyService.updateParty(party);
         return "OK";
     }

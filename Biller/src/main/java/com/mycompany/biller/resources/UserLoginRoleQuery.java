@@ -5,7 +5,7 @@
  */
 package com.mycompany.biller.resources;
 
-import com.mycompany.biller.dto.Company;
+import com.mycompany.biller.dto.PartyGroup;
 import java.math.BigDecimal;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

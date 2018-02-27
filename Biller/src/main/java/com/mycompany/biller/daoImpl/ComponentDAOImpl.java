@@ -6,7 +6,6 @@
 package com.mycompany.biller.daoImpl;
 
 import com.mycompany.biller.dao.ComponentDAO;
-import com.mycompany.biller.dto.Company;
 import com.mycompany.biller.dto.Component;
 import java.util.List;
 import org.hibernate.Session;
