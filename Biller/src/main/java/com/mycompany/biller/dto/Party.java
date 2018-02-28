@@ -40,9 +40,6 @@ public class Party {
     @Column(name = "PARENT_PARTY_ID")
     private int parentPartyId;
 
-    @OneToOne
-    private PartyGroup partyGroup;
-
     public String getDescription() {
         return description;
     }
@@ -57,14 +54,6 @@ public class Party {
 
     public void setParentPartyId(int parentPartyId) {
         this.parentPartyId = parentPartyId;
-    }
-
-    public PartyGroup getPartyGroup() {
-        return partyGroup;
-    }
-
-    public void setPartyGroup(PartyGroup partyGroup) {
-        this.partyGroup = partyGroup;
     }
 
     public int getPartyId() {
@@ -91,17 +80,17 @@ public class Party {
         this.partyCode = partyCode;
     }
 
-    @Override
-    public String toString() {
-        return "Party{" + "partyId=" + partyId + ", partyCode=" + partyCode + ", partyType=" + partyType + ", description=" + description + ", parentPartyId=" + parentPartyId + ", partyGroup=" + partyGroup + '}';
-    }
-
     public String getPartyType() {
         return partyType;
     }
 
     public void setPartyType(String partyType) {
         this.partyType = partyType;
+    }
+
+    @Override
+    public String toString() {
+        return "Party{" + "partyId=" + partyId + ", partyCode=" + partyCode + ", partyType=" + partyType + ", description=" + description + ", parentPartyId=" + parentPartyId + '}';
     }
 
 }

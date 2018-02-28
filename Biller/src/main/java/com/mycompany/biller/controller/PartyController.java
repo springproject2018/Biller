@@ -34,18 +34,13 @@ public class PartyController {
     String add(@RequestParam(value = "desc") String desc,
             @RequestParam(value = "parentPartyId") int parentPartyId,
             @RequestParam(value = "partyCode") String partyCode,
-            @RequestParam(value = "partyType") String partyType,
-            @RequestParam(value = "comId") int partyGroupId) {
-
-        PartyGroup partyGroup = new PartyGroup();
-        partyGroup.setPartyGroupId(partyGroupId);
+            @RequestParam(value = "partyType") String partyType) {
 
         Party party = new Party();
         party.setDescription(desc);
         party.setParentpartyId(parentPartyId);
         party.setPartyType(partyType);
         party.setPartyCode(partyCode);
-        party.setPartyGroup(partyGroup);
         partyService.addParty(party);
         return "OK";
     }
@@ -56,11 +51,7 @@ public class PartyController {
             @RequestParam(value = "desc") String desc,
             @RequestParam(value = "parentPartyId") int parentPartyId,
             @RequestParam(value = "partyType") String partyType,
-            @RequestParam(value = "partyCode") String partyCode,
-            @RequestParam(value = "comId") int partyGroupId) {
-
-        PartyGroup partyGroup = new PartyGroup();
-        partyGroup.setPartyGroupId(partyGroupId);
+            @RequestParam(value = "partyCode") String partyCode) {
 
         Party party = new Party();
         party.setPartyId(partyId);
@@ -68,7 +59,6 @@ public class PartyController {
         party.setParentpartyId(parentPartyId);
         party.setPartyCode(partyCode);
         party.setPartyType(partyType);
-        party.setPartyGroup(partyGroup);
         partyService.updateParty(party);
         return "OK";
     }

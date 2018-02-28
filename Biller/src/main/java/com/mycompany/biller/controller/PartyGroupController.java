@@ -36,11 +36,16 @@ public class PartyGroupController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "partyGroupName") String partyGroupName,
-            @RequestParam(value = "partyGroupCode") String partyGroupCode) {
+            @RequestParam(value = "partyGroupCode") String partyGroupCode,
+            @RequestParam(value = "partyId") int partyId) {
+        
+        Party party = new Party();
+        party.setPartyId(partyId);
 
         PartyGroup partyGroup = new PartyGroup();
         partyGroup.setPartyGroupCode(partyGroupCode);
         partyGroup.setPartyGroupName(partyGroupName);
+        partyGroup.setParty(party);
         partyGroupService.addPartyGroup(partyGroup);
         return "OK";
     }
@@ -53,6 +58,7 @@ public class PartyGroupController {
         partyGroupResources.setPartyGroupId(partyGroup.getPartyGroupId());
         partyGroupResources.setPartyGroupCode(partyGroup.getPartyGroupCode());
         partyGroupResources.setPartyGroupName(partyGroup.getPartyGroupName());
+        partyGroupResources.setParty(partyGroup.getParty());
 
         return new ResponseEntity<PartyGroupResources>(partyGroupResources, HttpStatus.CREATED);
     }
@@ -61,12 +67,17 @@ public class PartyGroupController {
     public @ResponseBody
     String update(@RequestParam(value = "partyGroupId") int partyGroupId,
             @RequestParam(value = "partyGroupName") String partyGroupName,
-            @RequestParam(value = "partyGroupCode") String partyGroupCode) {
+            @RequestParam(value = "partyGroupCode") String partyGroupCode,
+            @RequestParam(value = "partyId") int partyId) {
+        
+        Party party = new Party();
+        party.setPartyId(partyId);
 
         PartyGroup partyGroup = new PartyGroup();
         partyGroup.setPartyGroupId(partyGroupId);
         partyGroup.setPartyGroupCode(partyGroupCode);
         partyGroup.setPartyGroupName(partyGroupName);
+        partyGroup.setParty(party);
 
         partyGroupService.updatePartyGroup(partyGroup);
         return "OK";

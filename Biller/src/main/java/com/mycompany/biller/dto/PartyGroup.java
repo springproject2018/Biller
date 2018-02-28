@@ -32,6 +32,9 @@ public class PartyGroup {
     @Column(name = "PARTY_GROUP_NAME")
     private String partyGroupName;
 
+    @OneToOne
+    private Party party;
+
     public int getPartyGroupId() {
         return partyGroupId;
     }
@@ -56,9 +59,17 @@ public class PartyGroup {
         this.partyGroupName = partyGroupName;
     }
 
+    public Party getParty() {
+        return party;
+    }
+
+    public void setParty(Party party) {
+        this.party = party;
+    }
+
     @Override
     public String toString() {
-        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + '}';
+        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", party=" + party + '}';
     }
 
 }

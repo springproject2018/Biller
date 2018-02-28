@@ -20,35 +20,33 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class PartyServiceImpl implements PartyService {
-    
+
     @Autowired
     private PartyDAO partyDAO;
 
-   
-    
     @Override
     public void addParty(Party party) {
         partyDAO.addParty(party);
     }
-    
+
     @Override
     public void updateParty(Party party) {
         partyDAO.updateParty(party);
     }
-    
+
     @Override
     public void deleteParty(int partyId) {
         partyDAO.deleteParty(partyId);
     }
-    
+
     @Override
     public List<Party> listAllParty() {
         return partyDAO.listAllParty();
     }
-    
+
     @Override
     public List<Party> findById(int partyId) {
         return partyDAO.findById(partyId);
     }
-    
+
 }
