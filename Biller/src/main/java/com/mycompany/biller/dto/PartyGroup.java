@@ -5,6 +5,7 @@
  */
 package com.mycompany.biller.dto;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -59,6 +60,46 @@ public class PartyGroup {
         this.partyGroupName = partyGroupName;
     }
 
+    @Column(name = "PARTY_TYPE")
+    private String partyType;
+
+    //الرقم الضريبي للشركة
+    @Column(name = "PARTY_TAX_ID")
+    private int partyTaxId;
+
+//رقم السجل التجاري
+    @Column(name = "COMMERICAL_REGISTRATIO_NUM")
+    private String commericalRegistrationNum;
+
+    //رأس المال
+    @Column(name = "PARTY_CAPITAL")
+    private BigDecimal partyCapital;
+
+    @Column(name = "PARTY_ACTIVITY")
+    private String partyActivity;
+
+    @Column(name = "PARTY_SIZE")
+    private int partySize;
+
+    //معدل الفواتير الشهرية
+    @Column(name = "MONTHLY_INVOICING_RATE")
+    private float monthlyInvoicingRate;
+
+    @Column(name = "TELEPHONE_NUMBER1")
+    private String telephoneNumber1;
+
+    @Column(name = "TELEPHONE_NUMBER2")
+    private String telephoneNumber2;
+
+    @Column(name = "MOBILE_NUMBER")
+    private String mobileNumber;
+
+    @Column(name = "POSTAL_CODE")
+    private String postalCode;
+
+    @Column(name = "MAIL_BOX")
+    private String mailBox;
+
     public Party getParty() {
         return party;
     }
@@ -67,9 +108,107 @@ public class PartyGroup {
         this.party = party;
     }
 
+    public String getPartyType() {
+        return partyType;
+    }
+
+    public void setPartyType(String partyType) {
+        this.partyType = partyType;
+    }
+
+    public int getPartyTaxId() {
+        return partyTaxId;
+    }
+
+    public void setPartyTaxId(int partyTaxId) {
+        this.partyTaxId = partyTaxId;
+    }
+
+    public String getCommericalRegistrationNum() {
+        return commericalRegistrationNum;
+    }
+
+    public void setCommericalRegistrationNum(String commericalRegistrationNum) {
+        this.commericalRegistrationNum = commericalRegistrationNum;
+    }
+
+    public BigDecimal getPartyCapital() {
+        return partyCapital;
+    }
+
+    public void setPartyCapital(BigDecimal partyCapital) {
+        this.partyCapital = partyCapital;
+    }
+
+    public String getPartyActivity() {
+        return partyActivity;
+    }
+
+    public void setPartyActivity(String partyActivity) {
+        this.partyActivity = partyActivity;
+    }
+
+    public int getPartySize() {
+        return partySize;
+    }
+
+    public void setPartySize(int partySize) {
+        this.partySize = partySize;
+    }
+
+    public float getMonthlyInvoicingRate() {
+        return monthlyInvoicingRate;
+    }
+
+    public void setMonthlyInvoicingRate(float monthlyInvoicingRate) {
+        this.monthlyInvoicingRate = monthlyInvoicingRate;
+    }
+
+    public String getTelephoneNumber1() {
+        return telephoneNumber1;
+    }
+
+    public void setTelephoneNumber1(String telephoneNumber1) {
+        this.telephoneNumber1 = telephoneNumber1;
+    }
+
+    public String getTelephoneNumber2() {
+        return telephoneNumber2;
+    }
+
+    public void setTelephoneNumber2(String telephoneNumber2) {
+        this.telephoneNumber2 = telephoneNumber2;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getMailBox() {
+        return mailBox;
+    }
+
+    public void setMailBox(String mailBox) {
+        this.mailBox = mailBox;
+    }
+
     @Override
     public String toString() {
-        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", party=" + party + '}';
+        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", party=" + party + ", partyType=" + partyType + ", partyTaxId=" + partyTaxId + ", commericalRegistrationNum=" + commericalRegistrationNum + ", partyCapital=" + partyCapital + ", partyActivity=" + partyActivity + ", partySize=" + partySize + ", monthlyInvoicingRate=" + monthlyInvoicingRate + ", telephoneNumber1=" + telephoneNumber1 + ", telephoneNumber2=" + telephoneNumber2 + ", mobileNumber=" + mobileNumber + ", postalCode=" + postalCode + ", mailBox=" + mailBox + '}';
     }
+
+
 
 }

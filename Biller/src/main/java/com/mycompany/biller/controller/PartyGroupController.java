@@ -59,6 +59,19 @@ public class PartyGroupController {
         partyGroupResources.setPartyGroupCode(partyGroup.getPartyGroupCode());
         partyGroupResources.setPartyGroupName(partyGroup.getPartyGroupName());
         partyGroupResources.setParty(partyGroup.getParty());
+      
+        partyGroupResources.setPartyTaxId(partyGroup.getPartyTaxId());
+        partyGroupResources.setPartyType(partyGroup.getPartyType());
+        partyGroupResources.setCommericalRegistrationNum(partyGroup.getCommericalRegistrationNum());
+        partyGroupResources.setPartyActivity(partyGroup.getPartyActivity());
+        partyGroupResources.setPartyCapital(partyGroup.getPartyCapital());
+        partyGroupResources.setPartySize(partyGroup.getPartySize());
+        partyGroupResources.setMailBox(partyGroup.getMailBox());
+        partyGroupResources.setMobileNumber(partyGroup.getMobileNumber());
+        partyGroupResources.setMonthlyInvoicingRate(partyGroup.getMonthlyInvoicingRate());
+        partyGroupResources.setPostalCode(partyGroup.getPostalCode());
+        partyGroupResources.setTelephoneNumber1(partyGroup.getTelephoneNumber1());
+        partyGroupResources.setTelephoneNumber2(partyGroup.getTelephoneNumber2());
 
         return new ResponseEntity<PartyGroupResources>(partyGroupResources, HttpStatus.CREATED);
     }
