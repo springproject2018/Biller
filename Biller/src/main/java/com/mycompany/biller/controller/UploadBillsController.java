@@ -5,8 +5,9 @@
  */
 package com.mycompany.biller.controller;
 
+import com.mycompany.biller.dto.GlobalItem;
 import com.mycompany.biller.dto.UploadBills;
-import com.mycompany.biller.dto.UserLogin;
+import com.mycompany.biller.service.GlobalItemService;
 import com.mycompany.biller.service.UploadBillsService;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +31,9 @@ public class UploadBillsController {
     @Autowired
     private UploadBillsService uploadBillsService;
 
+    @Autowired
+    GlobalItemService globalItemService;
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(
@@ -37,7 +41,7 @@ public class UploadBillsController {
             @RequestParam(value = "companyNubmer") int companyNubmer,
             @RequestParam(value = "minAmount") double minAmount,
             @RequestParam(value = "maxAmount") double maxAmount,
-            @RequestParam(value = "partialyPay") boolean partialyPay,
+            @RequestParam(value = "partialyPay") char partialyPay,
             @RequestParam(value = "dateOfPost") Date dateOfPost
     ) {
         UploadBills uploadBills = new UploadBills();
@@ -60,7 +64,7 @@ public class UploadBillsController {
             @RequestParam(value = "companyNubmer") int companyNubmer,
             @RequestParam(value = "minAmount") double minAmount,
             @RequestParam(value = "maxAmount") double maxAmount,
-            @RequestParam(value = "partialyPay") boolean partialyPay,
+            @RequestParam(value = "partialyPay") char partialyPay,
             @RequestParam(value = "dateOfPost") Date dateOfPost
     ) {
         UploadBills uploadBills = new UploadBills();
@@ -98,6 +102,21 @@ public class UploadBillsController {
     public List<UploadBills> findById(@RequestParam(value = "id") int id) {
         return uploadBillsService.findUploadBillsById(id);
 
+    }
+
+    @RequestMapping(value = "/upadteStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public List<UploadBills> upadteStatus(
+            @RequestParam(value = "id") int id,
+            @RequestParam(value = "globalItemId") int globalItemId
+    ) {
+        GlobalItem globalItem = (GlobalItem) globalItemService.findGlobalItemById(globalItemId).get(0);
+
+        UploadBills uploadBills = (UploadBills) this.findById(id).get(0);
+
+        uploadBills.setGlobalItem(globalItem);
+
+        return uploadBillsService.updateUploadBillsList(uploadBills);
     }
 
 }

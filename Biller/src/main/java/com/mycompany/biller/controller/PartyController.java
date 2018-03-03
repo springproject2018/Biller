@@ -32,13 +32,11 @@ public class PartyController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
     String add(@RequestParam(value = "desc") String desc,
-            @RequestParam(value = "parentPartyId") int parentPartyId,
             @RequestParam(value = "partyCode") String partyCode,
             @RequestParam(value = "partyType") String partyType) {
 
         Party party = new Party();
         party.setDescription(desc);
-        party.setParentpartyId(parentPartyId);
         party.setPartyType(partyType);
         party.setPartyCode(partyCode);
         partyService.addParty(party);
@@ -49,14 +47,12 @@ public class PartyController {
     public @ResponseBody
     String update(@RequestParam(value = "partyId") int partyId,
             @RequestParam(value = "desc") String desc,
-            @RequestParam(value = "parentPartyId") int parentPartyId,
             @RequestParam(value = "partyType") String partyType,
             @RequestParam(value = "partyCode") String partyCode) {
 
         Party party = new Party();
         party.setPartyId(partyId);
         party.setDescription(desc);
-        party.setParentpartyId(parentPartyId);
         party.setPartyCode(partyCode);
         party.setPartyType(partyType);
         partyService.updateParty(party);

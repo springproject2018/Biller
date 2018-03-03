@@ -6,6 +6,7 @@
 package com.mycompany.biller.serviceImpl;
 
 import com.mycompany.biller.dao.UploadBillsDAO;
+import com.mycompany.biller.dto.GlobalItem;
 import com.mycompany.biller.dto.UploadBills;
 import com.mycompany.biller.service.UploadBillsService;
 import java.util.List;
@@ -46,7 +47,12 @@ public class UploadBillsServiceImpl implements UploadBillsService {
 
     @Override
     public List<UploadBills> findUploadBillsById(int id) {
-       return uploadBillsDAO.findUploadBillsById(id);
+        return uploadBillsDAO.findUploadBillsById(id);
+    }
+
+    @Override
+    public List<UploadBills> updateUploadBillsList(UploadBills uploadBills) {
+        return uploadBillsDAO.updateUploadBillsList(uploadBills);
     }
 
 }

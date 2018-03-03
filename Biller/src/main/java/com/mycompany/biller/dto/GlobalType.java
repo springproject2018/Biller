@@ -25,7 +25,7 @@ public class GlobalType {
     @Column(name = "GLOBAL_TYPE_ID")
     private int globalTypeId;
 
-    @Column(name = "PARENT_GLOBAL_TYPE_ID")
+    @Column(name = "PARENT_GLOBAL_TYPE_ID", nullable = true)
     private int parentGlobalTypeId;
     
     @Column(name = "DESCRIPTIN")
