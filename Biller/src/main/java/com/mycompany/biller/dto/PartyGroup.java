@@ -32,37 +32,19 @@ public class PartyGroup {
 
     @Column(name = "PARTY_GROUP_NAME")
     private String partyGroupName;
-
-    @OneToOne
-    private Party party;
-
-    public int getPartyGroupId() {
-        return partyGroupId;
-    }
-
-    public void setPartyGroupId(int partyGroupId) {
-        this.partyGroupId = partyGroupId;
-    }
-
-    public String getPartyGroupCode() {
-        return partyGroupCode;
-    }
-
-    public void setPartyGroupCode(String partyGroupCode) {
-        this.partyGroupCode = partyGroupCode;
-    }
-
-    public String getPartyGroupName() {
-        return partyGroupName;
-    }
-
-    public void setPartyGroupName(String partyGroupName) {
-        this.partyGroupName = partyGroupName;
-    }
-
-    @Column(name = "PARTY_TYPE")
+ @Column(name = "PARTY_TYPE")
     private String partyType;
 
+  @Column(name = "COMPANY_TYPE")
+    private String companyType;
+
+    public String getCompanyType() {
+        return companyType;
+    }
+
+    public void setCompanyType(String companyType) {
+        this.companyType = companyType;
+    }
     //الرقم الضريبي للشركة
     @Column(name = "PARTY_TAX_ID")
     private int partyTaxId;
@@ -99,6 +81,37 @@ public class PartyGroup {
 
     @Column(name = "MAIL_BOX")
     private String mailBox;
+    
+    
+    @OneToOne
+    private Party party;
+
+    
+    public int getPartyGroupId() {
+        return partyGroupId;
+    }
+
+    public void setPartyGroupId(int partyGroupId) {
+        this.partyGroupId = partyGroupId;
+    }
+
+    public String getPartyGroupCode() {
+        return partyGroupCode;
+    }
+
+    public void setPartyGroupCode(String partyGroupCode) {
+        this.partyGroupCode = partyGroupCode;
+    }
+
+    public String getPartyGroupName() {
+        return partyGroupName;
+    }
+
+    public void setPartyGroupName(String partyGroupName) {
+        this.partyGroupName = partyGroupName;
+    }
+
+   
 
     public Party getParty() {
         return party;
@@ -206,9 +219,11 @@ public class PartyGroup {
 
     @Override
     public String toString() {
-        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", party=" + party + ", partyType=" + partyType + ", partyTaxId=" + partyTaxId + ", commericalRegistrationNum=" + commericalRegistrationNum + ", partyCapital=" + partyCapital + ", partyActivity=" + partyActivity + ", partySize=" + partySize + ", monthlyInvoicingRate=" + monthlyInvoicingRate + ", telephoneNumber1=" + telephoneNumber1 + ", telephoneNumber2=" + telephoneNumber2 + ", mobileNumber=" + mobileNumber + ", postalCode=" + postalCode + ", mailBox=" + mailBox + '}';
+        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", partyType=" + partyType + ", companyType=" + companyType + ", partyTaxId=" + partyTaxId + ", commericalRegistrationNum=" + commericalRegistrationNum + ", partyCapital=" + partyCapital + ", partyActivity=" + partyActivity + ", partySize=" + partySize + ", monthlyInvoicingRate=" + monthlyInvoicingRate + ", telephoneNumber1=" + telephoneNumber1 + ", telephoneNumber2=" + telephoneNumber2 + ", mobileNumber=" + mobileNumber + ", postalCode=" + postalCode + ", mailBox=" + mailBox + ", party=" + party + '}';
     }
 
+
+ 
 
 
 }
