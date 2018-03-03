@@ -37,23 +37,14 @@ public class Party {
     @Column(name = "DESCRIPTIN")
     private String description;
 
-    @Column(name = "PARENT_PARTY_ID")
-    private int parentPartyId;
-
+//    @Column(name = "PARENT_PARTY_ID")
+//    private int parentPartyId;
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getParentPartyId() {
-        return parentPartyId;
-    }
-
-    public void setParentPartyId(int parentPartyId) {
-        this.parentPartyId = parentPartyId;
     }
 
     public int getPartyId() {
@@ -66,14 +57,6 @@ public class Party {
 
     public String getPartyCode() {
         return partyCode;
-    }
-
-    public int getParentpartyId() {
-        return parentPartyId;
-    }
-
-    public void setParentpartyId(int parentPartyId) {
-        this.parentPartyId = parentPartyId;
     }
 
     public void setPartyCode(String partyCode) {
@@ -90,7 +73,7 @@ public class Party {
 
     @Override
     public String toString() {
-        return "Party{" + "partyId=" + partyId + ", partyCode=" + partyCode + ", partyType=" + partyType + ", description=" + description + ", parentPartyId=" + parentPartyId + '}';
+        return "Party{" + "partyId=" + partyId + ", partyCode=" + partyCode + ", partyType=" + partyType + ", description=" + description + '}';
     }
 
 }
