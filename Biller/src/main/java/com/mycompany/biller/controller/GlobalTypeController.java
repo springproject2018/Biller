@@ -31,9 +31,8 @@ public class GlobalTypeController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "parentGlobalTypeId") int parentGlobalTypeId,
+    String add(@RequestParam(value = "parentGlobalTypeId", required = false) int parentGlobalTypeId,
             @RequestParam(value = "description") String description) {
-
         GlobalType globalType = new GlobalType();
         globalType.setParentGlobalTypeId(parentGlobalTypeId);
         globalType.setDescription(description);

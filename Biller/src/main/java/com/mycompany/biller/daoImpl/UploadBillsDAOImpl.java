@@ -6,6 +6,7 @@
 package com.mycompany.biller.daoImpl;
 
 import com.mycompany.biller.dao.UploadBillsDAO;
+import com.mycompany.biller.dto.GlobalItem;
 import com.mycompany.biller.dto.UploadBills;
 import java.util.List;
 import org.hibernate.Session;
@@ -60,6 +61,13 @@ public class UploadBillsDAOImpl implements UploadBillsDAO {
                 .createQuery(selectQuery)
                 .setParameter("id", id)
                 .list();
+    }
+
+    @Override
+    public List<UploadBills> updateUploadBillsList(UploadBills uploadBills) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(uploadBills);
+        return this.findUploadBillsById(uploadBills.getId());
     }
 
 }

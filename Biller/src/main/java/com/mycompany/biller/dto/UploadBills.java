@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,30 +24,46 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "UPLOAD_BILLS")
 public class UploadBills {
-    
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     @Column(name = "COMPANY_NAME")
     private String companyName;
-    
+
     @Column(name = "COMPANY_NUMBER")
     private int companyNubmer;
-    
+
     @Column(name = "MIN_AMOUNT")
     private double minAmount;
-    
+
     @Column(name = "MAX_AMOUNT")
     private double maxAmount;
-    
+
     @Column(name = "PARTIALY_PAY")
-    private boolean partialyPay;
-    
+    private char partialyPay;
+
     @Column(name = "DATE_OF_POST")
     @Temporal(TemporalType.DATE)
     private Date dateOfPost;
+
+    @Column(name = "DATE_OF_PAYMENT")
+    @Temporal(TemporalType.DATE)
+    private Date dateOfPayment;
+
+    @ManyToOne
+    @JoinColumn(name = "BILL_STATUS")
+    private GlobalItem globalItem;
+
+    public GlobalItem getGlobalItem() {
+        return globalItem;
+    }
+
+    public void setGlobalItem(GlobalItem globalItem) {
+        this.globalItem = globalItem;
+    }
 
     public int getId() {
         return id;
@@ -87,11 +105,11 @@ public class UploadBills {
         this.maxAmount = maxAmount;
     }
 
-    public boolean isPartialyPay() {
+    public char isPartialyPay() {
         return partialyPay;
     }
 
-    public void setPartialyPay(boolean partialyPay) {
+    public void setPartialyPay(char partialyPay) {
         this.partialyPay = partialyPay;
     }
 
@@ -102,7 +120,13 @@ public class UploadBills {
     public void setDateOfPost(Date dateOfPost) {
         this.dateOfPost = dateOfPost;
     }
-    
-    
-    
+
+    public Date getDateOfPayment() {
+        return dateOfPayment;
+    }
+
+    public void setDateOfPayment(Date dateOfPayment) {
+        this.dateOfPayment = dateOfPayment;
+    }
+
 }

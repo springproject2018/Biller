@@ -6,6 +6,7 @@
 package com.mycompany.biller.service;
 
 import com.mycompany.biller.dao.*;
+import com.mycompany.biller.dto.GlobalItem;
 import com.mycompany.biller.dto.UploadBills;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @author ismail
  */
 public interface UploadBillsService {
-    
+
     public void addUploadBills(UploadBills uploadBills);
 
     public void updateUploadBills(UploadBills uploadBills);
@@ -24,5 +25,7 @@ public interface UploadBillsService {
     public List<UploadBills> listAllUploadBills();
 
     public List<UploadBills> findUploadBillsById(int id);
-    
+
+    public List<UploadBills> updateUploadBillsList(UploadBills uploadBills);
+
 }
