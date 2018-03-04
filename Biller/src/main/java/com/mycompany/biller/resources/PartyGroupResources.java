@@ -23,7 +23,7 @@ public class PartyGroupResources extends ResourceSupport {
     private String partyGroupName;
     private int partyId;
 
-    private String partyType;
+    private String partyGroupType;
     private String companyType;
     private int partyTaxId;
     private String commericalRegistrationNum;
@@ -85,13 +85,15 @@ public class PartyGroupResources extends ResourceSupport {
         this.partyGroupName = partyGroupName;
     }
 
-    public String getPartyType() {
-        return partyType;
+    public String getPartyGroupType() {
+        return partyGroupType;
     }
 
-    public void setPartyType(String partyType) {
-        this.partyType = partyType;
+    public void setPartyGroupType(String partyGroupType) {
+        this.partyGroupType = partyGroupType;
     }
+
+   
 
     public int getPartyTaxId() {
         return partyTaxId;
@@ -192,7 +194,7 @@ public class PartyGroupResources extends ResourceSupport {
         partyGroup.setParty(party);
         partyGroup.setCompanyType(companyType);
         partyGroup.setPartyTaxId(partyTaxId);
-        partyGroup.setPartyType(partyType);
+        partyGroup.setPartyGroupType(partyGroupType);
         partyGroup.setCommericalRegistrationNum(commericalRegistrationNum);
         partyGroup.setPartyActivity(partyActivity);
         partyGroup.setPartyCapital(partyCapital);

@@ -32,8 +32,8 @@ public class PartyGroup {
 
     @Column(name = "PARTY_GROUP_NAME")
     private String partyGroupName;
- @Column(name = "PARTY_TYPE")
-    private String partyType;
+ @Column(name = "PARTY_GROUP_TYPE")
+    private String partyGroupType;
 
   @Column(name = "COMPANY_TYPE")
     private String companyType;
@@ -121,12 +121,12 @@ public class PartyGroup {
         this.party = party;
     }
 
-    public String getPartyType() {
-        return partyType;
+    public String getPartyGroupType() {
+        return partyGroupType;
     }
 
-    public void setPartyType(String partyType) {
-        this.partyType = partyType;
+    public void setPartyGroupType(String partyGroupType) {
+        this.partyGroupType = partyGroupType;
     }
 
     public int getPartyTaxId() {
@@ -219,7 +219,7 @@ public class PartyGroup {
 
     @Override
     public String toString() {
-        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", partyType=" + partyType + ", companyType=" + companyType + ", partyTaxId=" + partyTaxId + ", commericalRegistrationNum=" + commericalRegistrationNum + ", partyCapital=" + partyCapital + ", partyActivity=" + partyActivity + ", partySize=" + partySize + ", monthlyInvoicingRate=" + monthlyInvoicingRate + ", telephoneNumber1=" + telephoneNumber1 + ", telephoneNumber2=" + telephoneNumber2 + ", mobileNumber=" + mobileNumber + ", postalCode=" + postalCode + ", mailBox=" + mailBox + ", party=" + party + '}';
+        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", partyGroupType=" + partyGroupType + ", companyType=" + companyType + ", partyTaxId=" + partyTaxId + ", commericalRegistrationNum=" + commericalRegistrationNum + ", partyCapital=" + partyCapital + ", partyActivity=" + partyActivity + ", partySize=" + partySize + ", monthlyInvoicingRate=" + monthlyInvoicingRate + ", telephoneNumber1=" + telephoneNumber1 + ", telephoneNumber2=" + telephoneNumber2 + ", mobileNumber=" + mobileNumber + ", postalCode=" + postalCode + ", mailBox=" + mailBox + ", party=" + party + '}';
     }
 
 

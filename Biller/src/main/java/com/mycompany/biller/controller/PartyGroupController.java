@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.mycompany.biller.service.PartyGroupService;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -33,47 +35,19 @@ public class PartyGroupController {
     @Autowired
     private PartyGroupService partyGroupService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public @ResponseBody
-    String add(@RequestParam(value = "partyGroupName") String partyGroupName,
-            @RequestParam(value = "partyGroupCode") String partyGroupCode,
-            @RequestParam(value = "partyId") int partyId) {
-        
-        Party party = new Party();
-        party.setPartyId(partyId);
-
-        PartyGroup partyGroup = new PartyGroup();
-        partyGroup.setPartyGroupCode(partyGroupCode);
-        partyGroup.setPartyGroupName(partyGroupName);
-        partyGroup.setParty(party);
-        partyGroupService.addPartyGroup(partyGroup);
-        return "OK";
-    }
 
     @RequestMapping(value = "/createPartyGroup", method = RequestMethod.POST)
-    public ResponseEntity<PartyGroupResources> createPartyGroup(@RequestBody PartyGroupResources partyGroupResources) {
+    public Map<String,Object> createPartyGroup(@RequestBody PartyGroupResources partyGroupResources) {
         System.out.println("*** createCompany ***");
 
         PartyGroup partyGroup = partyGroupService.createPartyGroup(partyGroupResources.toPartyGroup());
-        partyGroupResources.setPartyGroupId(partyGroup.getPartyGroupId());
-        partyGroupResources.setPartyGroupCode(partyGroup.getPartyGroupCode());
-        partyGroupResources.setPartyGroupName(partyGroup.getPartyGroupName());
-        partyGroupResources.setParty(partyGroup.getParty());
-      partyGroupResources.setCompanyType(partyGroup.getCompanyType());
-        partyGroupResources.setPartyTaxId(partyGroup.getPartyTaxId());
-        partyGroupResources.setPartyType(partyGroup.getPartyType());
-        partyGroupResources.setCommericalRegistrationNum(partyGroup.getCommericalRegistrationNum());
-        partyGroupResources.setPartyActivity(partyGroup.getPartyActivity());
-        partyGroupResources.setPartyCapital(partyGroup.getPartyCapital());
-        partyGroupResources.setPartySize(partyGroup.getPartySize());
-        partyGroupResources.setMailBox(partyGroup.getMailBox());
-        partyGroupResources.setMobileNumber(partyGroup.getMobileNumber());
-        partyGroupResources.setMonthlyInvoicingRate(partyGroup.getMonthlyInvoicingRate());
-        partyGroupResources.setPostalCode(partyGroup.getPostalCode());
-        partyGroupResources.setTelephoneNumber1(partyGroup.getTelephoneNumber1());
-        partyGroupResources.setTelephoneNumber2(partyGroup.getTelephoneNumber2());
-
-        return new ResponseEntity<PartyGroupResources>(partyGroupResources, HttpStatus.CREATED);
+        System.out.println("partyGroup "+partyGroup);
+        HashMap <String,Object> result = new HashMap<String,Object>();
+   result.put("partyGroupId",partyGroup.getPartyGroupId());
+    result.put("status",HttpStatus.CREATED);
+     result.put("msg","created successfully");
+   return result;
+   
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
