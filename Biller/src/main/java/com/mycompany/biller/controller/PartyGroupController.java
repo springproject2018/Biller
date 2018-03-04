@@ -8,6 +8,7 @@ package com.mycompany.biller.controller;
 import com.mycompany.biller.dto.PartyGroup;
 import com.mycompany.biller.dto.Party;
 import com.mycompany.biller.resources.PartyGroupResources;
+import com.mycompany.biller.resources.UserLoginRoleQuery;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,16 +38,17 @@ public class PartyGroupController {
 
 
     @RequestMapping(value = "/createPartyGroup", method = RequestMethod.POST)
-    public Map<String,Object> createPartyGroup(@RequestBody PartyGroupResources partyGroupResources) {
+    public ResponseEntity<Map<String,Object>> createPartyGroup(@RequestBody PartyGroupResources partyGroupResources) {
         System.out.println("*** createCompany ***");
 
         PartyGroup partyGroup = partyGroupService.createPartyGroup(partyGroupResources.toPartyGroup());
         System.out.println("partyGroup "+partyGroup);
         HashMap <String,Object> result = new HashMap<String,Object>();
    result.put("partyGroupId",partyGroup.getPartyGroupId());
-    result.put("status",HttpStatus.CREATED);
+    result.put("status",HttpStatus.NOT_FOUND);
      result.put("msg","created successfully");
-   return result;
+     
+    return new ResponseEntity<Map<String,Object>>(result, HttpStatus.NOT_FOUND);
    
     }
 
