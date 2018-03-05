@@ -11,7 +11,10 @@ import com.mycompany.biller.service.GlobalItemService;
 import com.mycompany.biller.service.UploadBillsService;
 import java.util.Date;
 import java.util.List;
+import static javafx.scene.input.KeyCode.T;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,7 +39,7 @@ public class UploadBillsController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(
+    ResponseEntity<UploadBills> add(
             @RequestParam(value = "companyName") String companyName,
             @RequestParam(value = "companyNubmer") int companyNubmer,
             @RequestParam(value = "minAmount") double minAmount,
@@ -53,7 +56,7 @@ public class UploadBillsController {
         uploadBills.setDateOfPost(dateOfPost);
 
         uploadBillsService.addUploadBills(uploadBills);
-        return "OK";
+        return new ResponseEntity<UploadBills>(uploadBills,HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/upadte", method = RequestMethod.POST)
