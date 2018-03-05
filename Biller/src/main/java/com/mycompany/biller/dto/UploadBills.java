@@ -21,7 +21,6 @@ import javax.persistence.TemporalType;
  *
  * @author ismail
  */
-@Entity
 @Table(name = "UPLOAD_BILLS")
 public class UploadBills {
 
