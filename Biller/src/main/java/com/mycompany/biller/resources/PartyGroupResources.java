@@ -225,7 +225,7 @@ public class PartyGroupResources extends ResourceSupport {
         partyGroup.setPartyGroupCode(partyGroupCode);
         partyGroup.setPartyGroupName(partyGroupName);
         partyGroup.setParty(party);
-        partyGroup.setCompanyType(companyType);
+//        partyGroup.setCompanyType(companyType);
         partyGroup.setPartyTaxId(partyTaxId);
         partyGroup.setPartyGroupType(partyGroupType);
         partyGroup.setCommericalRegistrationNum(commericalRegistrationNum);

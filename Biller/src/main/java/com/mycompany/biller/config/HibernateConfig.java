@@ -22,20 +22,20 @@ public class HibernateConfig {
 
     // Change the below based on the DBMS you choose
     //Oracle DataBase
-//	private final static String DATABASE_URL = "jdbc:oracle:thin:@127.0.0.1:1521/TestDB";
-//	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
-//	private final static String DATABASE_DIALECT = "org.hibernate.dialect.OracleDialect";
-//	private final static String DATABASE_USERNAME = "TestDB";
-//	private final static String DATABASE_PASSWORD = "oracle12c";
+	private final static String DATABASE_URL = "jdbc:oracle:thin:@127.0.0.1:1521/TestDB";
+	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.OracleDialect";
+	private final static String DATABASE_USERNAME = "TestDB";
+	private final static String DATABASE_PASSWORD = "oracle12c";
 //        
         
         //        ajarmeh plz don't delete this just comment and edit where you need 
             //Oracle DataBase
-	private final static String DATABASE_URL = "jdbc:oracle:thin:@127.0.0.1:1521:BILLER";
-	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.OracleDialect";
-	private final static String DATABASE_USERNAME = "biller";
-	private final static String DATABASE_PASSWORD = "biller";
+//	private final static String DATABASE_URL = "jdbc:oracle:thin:@127.0.0.1:1521:BILLER";
+//	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
+//	private final static String DATABASE_DIALECT = "org.hibernate.dialect.OracleDialect";
+//	private final static String DATABASE_USERNAME = "biller";
+//	private final static String DATABASE_PASSWORD = "biller";
         
         
     // MySql DataBase

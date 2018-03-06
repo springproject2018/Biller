@@ -6,12 +6,15 @@
 package com.mycompany.biller.dto;
 
 import java.math.BigDecimal;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -24,27 +27,55 @@ public class PartyGroup {
 
     @Id
     @Column(name = "PARTY_GROUP_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private int partyGroupId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Party party;
+
+    public int getPartyGroupId() {
+        return partyGroupId;
+    }
 
     @Column(name = "PARTY_GROUP_CODE")
     private String partyGroupCode;
 
     @Column(name = "PARTY_GROUP_NAME")
     private String partyGroupName;
- @Column(name = "PARTY_GROUP_TYPE")
+    @Column(name = "PARTY_GROUP_TYPE")
     private String partyGroupType;
 
-  @Column(name = "COMPANY_TYPE")
+    @Column(name = "COMPANY_TYPE")
     private String companyType;
 
     public String getCompanyType() {
         return companyType;
     }
 
-    public void setCompanyType(String companyType) {
-        this.companyType = companyType;
+    public void setPartyGroupId(int partyGroupId) {
+        this.partyGroupId = partyGroupId;
     }
+
+    public String getPartyGroupCode() {
+        return partyGroupCode;
+    }
+
+    public void setPartyGroupCode(String partyGroupCode) {
+        this.partyGroupCode = partyGroupCode;
+    }
+
+    public String getPartyGroupName() {
+        return partyGroupName;
+    }
+
+    public void setPartyGroupName(String partyGroupName) {
+        this.partyGroupName = partyGroupName;
+    }
+
+    @Column(name = "PARTY_TYPE")
+    private String partyType;
+
     //الرقم الضريبي للشركة
     @Column(name = "PARTY_TAX_ID")
     private int partyTaxId;
@@ -81,37 +112,14 @@ public class PartyGroup {
 
     @Column(name = "MAIL_BOX")
     private String mailBox;
-    
-    
-    @OneToOne
-    private Party party;
 
-    
-    public int getPartyGroupId() {
-        return partyGroupId;
+    public String getPartyType() {
+        return partyType;
     }
 
-    public void setPartyGroupId(int partyGroupId) {
-        this.partyGroupId = partyGroupId;
+    public void setPartyType(String partyType) {
+        this.partyType = partyType;
     }
-
-    public String getPartyGroupCode() {
-        return partyGroupCode;
-    }
-
-    public void setPartyGroupCode(String partyGroupCode) {
-        this.partyGroupCode = partyGroupCode;
-    }
-
-    public String getPartyGroupName() {
-        return partyGroupName;
-    }
-
-    public void setPartyGroupName(String partyGroupName) {
-        this.partyGroupName = partyGroupName;
-    }
-
-   
 
     public Party getParty() {
         return party;
@@ -216,14 +224,5 @@ public class PartyGroup {
     public void setMailBox(String mailBox) {
         this.mailBox = mailBox;
     }
-
-    @Override
-    public String toString() {
-        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", partyGroupType=" + partyGroupType + ", companyType=" + companyType + ", partyTaxId=" + partyTaxId + ", commericalRegistrationNum=" + commericalRegistrationNum + ", partyCapital=" + partyCapital + ", partyActivity=" + partyActivity + ", partySize=" + partySize + ", monthlyInvoicingRate=" + monthlyInvoicingRate + ", telephoneNumber1=" + telephoneNumber1 + ", telephoneNumber2=" + telephoneNumber2 + ", mobileNumber=" + mobileNumber + ", postalCode=" + postalCode + ", mailBox=" + mailBox + ", party=" + party + '}';
-    }
-
-
- 
-
 
 }

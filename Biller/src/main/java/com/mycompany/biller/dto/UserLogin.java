@@ -24,11 +24,12 @@ import javax.persistence.Table;
 @Table(name = "USER_LOGIN")
 public class UserLogin {
 
-    @Id
+    
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_LOGIN_ID")
     private int userLoginId;
 
+    @Id
     @Column(name = "USER_NAME", unique = true)
     private String userName;
 
