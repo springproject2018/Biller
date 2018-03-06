@@ -6,6 +6,7 @@
 package com.mycompany.biller.service;
 
 import com.mycompany.biller.dto.Party;
+import com.mycompany.biller.dto.PartyGroup;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public interface PartyService {
     
     public void addParty(Party party);
 
+    public Party createParty(Party party);
     public void updateParty(Party party);
 
     public void deleteParty(int partyId);

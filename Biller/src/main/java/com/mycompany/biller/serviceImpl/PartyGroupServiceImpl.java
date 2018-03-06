@@ -5,6 +5,7 @@
  */
 package com.mycompany.biller.serviceImpl;
 
+import com.mycompany.biller.dao.PartyDAO;
 import com.mycompany.biller.dto.PartyGroup;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.mycompany.biller.dao.PartyGroupDAO;
+import com.mycompany.biller.dto.Party;
 import com.mycompany.biller.service.PartyGroupService;
 
 /**
@@ -24,6 +26,9 @@ public class PartyGroupServiceImpl implements PartyGroupService {
 
     @Autowired
     private PartyGroupDAO partyGroupDAO;
+    
+    @Autowired
+    private PartyDAO partyDAO;
 
     @Override
     public void addPartyGroup(PartyGroup partyGroup) {
@@ -52,6 +57,13 @@ public class PartyGroupServiceImpl implements PartyGroupService {
 
     @Override
     public PartyGroup createPartyGroup(PartyGroup partyGroup) {
+        
+        Party party = partyDAO.createParty(partyGroup.getParty());
+        
+        partyGroup.setParty(party);
+        
+        System.out.println(">: "+party);
+        
         return partyGroupDAO.createPartyGroup(partyGroup);
     }
 

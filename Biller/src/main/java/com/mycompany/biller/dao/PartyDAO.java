@@ -24,5 +24,7 @@ public interface PartyDAO {
 
     public List<Party> findById(int partyId);
     
+    public Party createParty(Party party);
+    
     
 }

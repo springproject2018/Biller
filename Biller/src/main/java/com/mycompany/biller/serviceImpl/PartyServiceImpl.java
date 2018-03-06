@@ -49,4 +49,9 @@ public class PartyServiceImpl implements PartyService {
         return partyDAO.findById(partyId);
     }
 
+    @Override
+    public Party createParty(Party party) {
+        return partyDAO.createParty(party);
+    }
+
 }
