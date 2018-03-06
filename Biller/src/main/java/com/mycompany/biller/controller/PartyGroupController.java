@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.mycompany.biller.service.PartyGroupService;
+import com.mycompany.biller.service.PartyService;
 
 /**
  *
@@ -35,17 +36,18 @@ public class PartyGroupController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "partyGroupName") String partyGroupName,
-            @RequestParam(value = "partyGroupCode") String partyGroupCode,
-            @RequestParam(value = "partyId") int partyId) {
-        
+    String add(@RequestParam(value = "partyGroupId") int partyGroupId,
+            @RequestParam(value = "partyGroupName") String partyGroupName,
+            @RequestParam(value = "partyGroupCode") String partyGroupCode) {
+//        ,@RequestParam(value = "partyId") int partyId
         Party party = new Party();
-        party.setPartyId(partyId);
+        party.setPartyId(partyGroupId);
 
         PartyGroup partyGroup = new PartyGroup();
+        partyGroup.setPartyGroupId(partyGroupId);
         partyGroup.setPartyGroupCode(partyGroupCode);
         partyGroup.setPartyGroupName(partyGroupName);
-        partyGroup.setParty(party);
+//        partyGroup.setParty(party);
         partyGroupService.addPartyGroup(partyGroup);
         return "OK";
     }
@@ -59,7 +61,7 @@ public class PartyGroupController {
         partyGroupResources.setPartyGroupCode(partyGroup.getPartyGroupCode());
         partyGroupResources.setPartyGroupName(partyGroup.getPartyGroupName());
         partyGroupResources.setParty(partyGroup.getParty());
-      
+
         partyGroupResources.setPartyTaxId(partyGroup.getPartyTaxId());
         partyGroupResources.setPartyType(partyGroup.getPartyType());
         partyGroupResources.setCommericalRegistrationNum(partyGroup.getCommericalRegistrationNum());
@@ -82,7 +84,7 @@ public class PartyGroupController {
             @RequestParam(value = "partyGroupName") String partyGroupName,
             @RequestParam(value = "partyGroupCode") String partyGroupCode,
             @RequestParam(value = "partyId") int partyId) {
-        
+
         Party party = new Party();
         party.setPartyId(partyId);
 

@@ -6,12 +6,15 @@
 package com.mycompany.biller.dto;
 
 import java.math.BigDecimal;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -21,29 +24,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PARTY_GROUP")
 public class PartyGroup {
-
     @Id
     @Column(name = "PARTY_GROUP_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private int partyGroupId;
 
+    @OneToOne(cascade=CascadeType.ALL)
+    @PrimaryKeyJoinColumn 
+    private Party party;
+    
     @Column(name = "PARTY_GROUP_CODE")
     private String partyGroupCode;
 
     @Column(name = "PARTY_GROUP_NAME")
     private String partyGroupName;
 
-    @OneToOne
-    private Party party;
+  
 
     public int getPartyGroupId() {
         return partyGroupId;
     }
-
     public void setPartyGroupId(int partyGroupId) {
         this.partyGroupId = partyGroupId;
     }
-
     public String getPartyGroupCode() {
         return partyGroupCode;
     }
@@ -203,12 +206,5 @@ public class PartyGroup {
     public void setMailBox(String mailBox) {
         this.mailBox = mailBox;
     }
-
-    @Override
-    public String toString() {
-        return "PartyGroup{" + "partyGroupId=" + partyGroupId + ", partyGroupCode=" + partyGroupCode + ", partyGroupName=" + partyGroupName + ", party=" + party + ", partyType=" + partyType + ", partyTaxId=" + partyTaxId + ", commericalRegistrationNum=" + commericalRegistrationNum + ", partyCapital=" + partyCapital + ", partyActivity=" + partyActivity + ", partySize=" + partySize + ", monthlyInvoicingRate=" + monthlyInvoicingRate + ", telephoneNumber1=" + telephoneNumber1 + ", telephoneNumber2=" + telephoneNumber2 + ", mobileNumber=" + mobileNumber + ", postalCode=" + postalCode + ", mailBox=" + mailBox + '}';
-    }
-
-
 
 }

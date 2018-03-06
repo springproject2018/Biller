@@ -32,7 +32,7 @@ public class UploadBillsController {
     private UploadBillsService uploadBillsService;
 
     @Autowired
-    GlobalItemService globalItemService;
+    private GlobalItemService globalItemService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody

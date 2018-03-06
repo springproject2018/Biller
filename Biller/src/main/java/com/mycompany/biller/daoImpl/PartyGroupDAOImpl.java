@@ -28,8 +28,10 @@ public class PartyGroupDAOImpl implements PartyGroupDAO {
 
     @Override
     public void addPartyGroup(PartyGroup partyGroup) {
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(partyGroup);
+//        Session session = sessionFactory.getCurrentSession();
+//        session.persist(partyGroup);
+        
+         sessionFactory.getCurrentSession().save(partyGroup);
     }
 
     @Override
@@ -69,7 +71,7 @@ public class PartyGroupDAOImpl implements PartyGroupDAO {
     public PartyGroup createPartyGroup(PartyGroup partyGroup) {
         int id = (int) sessionFactory.getCurrentSession().save(partyGroup);
 
-        partyGroup.setPartyGroupId(id);
+//        partyGroup.setPartyGroupId(id);
 
         return partyGroup;
     }
