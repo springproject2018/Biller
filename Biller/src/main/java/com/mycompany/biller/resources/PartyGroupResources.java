@@ -23,7 +23,8 @@ public class PartyGroupResources extends ResourceSupport {
     private String partyGroupName;
     private int partyId;
 
-    private String partyType;
+    private String partyGroupType;
+    private String companyType;
     private int partyTaxId;
     private String commericalRegistrationNum;
     private BigDecimal partyCapital;
@@ -72,17 +73,27 @@ public class PartyGroupResources extends ResourceSupport {
         return partyGroupName;
     }
 
+    public String getCompanyType() {
+        return companyType;
+    }
+
+    public void setCompanyType(String companyType) {
+        this.companyType = companyType;
+    }
+
     public void setPartyGroupName(String partyGroupName) {
         this.partyGroupName = partyGroupName;
     }
 
-    public String getPartyType() {
-        return partyType;
+    public String getPartyGroupType() {
+        return partyGroupType;
     }
 
-    public void setPartyType(String partyType) {
-        this.partyType = partyType;
+    public void setPartyGroupType(String partyGroupType) {
+        this.partyGroupType = partyGroupType;
     }
+
+   
 
     public int getPartyTaxId() {
         return partyTaxId;
@@ -181,8 +192,9 @@ public class PartyGroupResources extends ResourceSupport {
         partyGroup.setPartyGroupCode(partyGroupCode);
         partyGroup.setPartyGroupName(partyGroupName);
         partyGroup.setParty(party);
+//        partyGroup.setCompanyType(companyType);
         partyGroup.setPartyTaxId(partyTaxId);
-        partyGroup.setPartyType(partyType);
+        partyGroup.setPartyGroupType(partyGroupType);
         partyGroup.setCommericalRegistrationNum(commericalRegistrationNum);
         partyGroup.setPartyActivity(partyActivity);
         partyGroup.setPartyCapital(partyCapital);

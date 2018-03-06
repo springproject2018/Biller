@@ -63,7 +63,7 @@ public class PartyGroupController {
         partyGroupResources.setParty(partyGroup.getParty());
 
         partyGroupResources.setPartyTaxId(partyGroup.getPartyTaxId());
-        partyGroupResources.setPartyType(partyGroup.getPartyType());
+//        partyGroupResources.setPartyType(partyGroup.getPartyType());
         partyGroupResources.setCommericalRegistrationNum(partyGroup.getCommericalRegistrationNum());
         partyGroupResources.setPartyActivity(partyGroup.getPartyActivity());
         partyGroupResources.setPartyCapital(partyGroup.getPartyCapital());
