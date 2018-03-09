@@ -5,6 +5,7 @@
  */
 package com.mycompany.biller.serviceImpl;
 
+import com.mycompany.biller.dao.PartyDAO;
 import com.mycompany.biller.dto.PartyGroup;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.mycompany.biller.dao.PartyGroupDAO;
+import com.mycompany.biller.exception.NotFoundException;
 import com.mycompany.biller.service.PartyGroupService;
 
 /**
@@ -25,8 +27,14 @@ public class PartyGroupServiceImpl implements PartyGroupService {
     @Autowired
     private PartyGroupDAO partyGroupDAO;
 
+    @Autowired
+    private PartyDAO partyDAO;
+
     @Override
     public void addPartyGroup(PartyGroup partyGroup) {
+        if (partyDAO.findById(partyGroup.getParty().getPartyId()).size() == 0) {
+            throw new NotFoundException("Party Information Not Exist");
+        }
         partyGroupDAO.addPartyGroup(partyGroup);
     }
 

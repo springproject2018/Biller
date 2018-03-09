@@ -56,12 +56,13 @@ public class PartyDAOImpl implements PartyDAO {
 
     @Override
     public List<Party> findById(int partyId) {
-        String selectQuery = "FROM PARTY WHERE PARTY_ID = :partyId";
+        String selectQuery = "FROM Party WHERE PARTY_ID = :partyId";
         return sessionFactory
                 .getCurrentSession()
                 .createQuery(selectQuery)
                 .setParameter("partyId", partyId)
                 .list();
+//        (Party) sessionFactory.getCurrentSession().get(Party.class, partyId);
     }
 
 }

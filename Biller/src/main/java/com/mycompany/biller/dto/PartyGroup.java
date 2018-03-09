@@ -24,39 +24,31 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PARTY_GROUP")
 public class PartyGroup {
-
     @Id
     @Column(name = "PARTY_GROUP_ID")
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int partyGroupId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+
+    @OneToOne(cascade=CascadeType.ALL,optional = false)
+    @JoinColumn(name = "partyId", unique = true , nullable=false) 
+//    @PrimaryKeyJoinColumn
     private Party party;
-
-    public int getPartyGroupId() {
-        return partyGroupId;
-    }
-
+    
     @Column(name = "PARTY_GROUP_CODE")
     private String partyGroupCode;
 
     @Column(name = "PARTY_GROUP_NAME")
     private String partyGroupName;
-    @Column(name = "PARTY_GROUP_TYPE")
-    private String partyGroupType;
 
-    @Column(name = "COMPANY_TYPE")
-    private String companyType;
+  
 
-    public String getCompanyType() {
-        return companyType;
+    public int getPartyGroupId() {
+        return partyGroupId;
     }
-
     public void setPartyGroupId(int partyGroupId) {
         this.partyGroupId = partyGroupId;
     }
-
     public String getPartyGroupCode() {
         return partyGroupCode;
     }
@@ -113,14 +105,6 @@ public class PartyGroup {
     @Column(name = "MAIL_BOX")
     private String mailBox;
 
-    public String getPartyType() {
-        return partyType;
-    }
-
-    public void setPartyType(String partyType) {
-        this.partyType = partyType;
-    }
-
     public Party getParty() {
         return party;
     }
@@ -129,12 +113,12 @@ public class PartyGroup {
         this.party = party;
     }
 
-    public String getPartyGroupType() {
-        return partyGroupType;
+    public String getPartyType() {
+        return partyType;
     }
 
-    public void setPartyGroupType(String partyGroupType) {
-        this.partyGroupType = partyGroupType;
+    public void setPartyType(String partyType) {
+        this.partyType = partyType;
     }
 
     public int getPartyTaxId() {

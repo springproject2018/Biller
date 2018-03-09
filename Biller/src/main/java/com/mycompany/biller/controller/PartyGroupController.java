@@ -33,21 +33,22 @@ public class PartyGroupController {
 
     @Autowired
     private PartyGroupService partyGroupService;
+    
+    @Autowired
+    private PartyService partyService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public @ResponseBody
-    String add(@RequestParam(value = "partyGroupId") int partyGroupId,
+    String add(@RequestParam(value = "partyId") int partyId,
             @RequestParam(value = "partyGroupName") String partyGroupName,
             @RequestParam(value = "partyGroupCode") String partyGroupCode) {
-//        ,@RequestParam(value = "partyId") int partyId
         Party party = new Party();
-        party.setPartyId(partyGroupId);
-
+        party.setPartyId(partyId);
+        
         PartyGroup partyGroup = new PartyGroup();
-        partyGroup.setPartyGroupId(partyGroupId);
         partyGroup.setPartyGroupCode(partyGroupCode);
         partyGroup.setPartyGroupName(partyGroupName);
-//        partyGroup.setParty(party);
+        partyGroup.setParty(party);
         partyGroupService.addPartyGroup(partyGroup);
         return "OK";
     }
