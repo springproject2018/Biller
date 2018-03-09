@@ -17,11 +17,15 @@ import org.springframework.hateoas.ResourceSupport;
 public class PartyGroupResources extends ResourceSupport {
 
     private Party party;
+    
+    private String partyCode;
+    private String partyType;
+    private int partyId;
+    private String description;
 
     private int partyGroupId;
     private String partyGroupCode;
     private String partyGroupName;
-    private int partyId;
 
     private String partyGroupType;
     private String companyType;
@@ -36,6 +40,32 @@ public class PartyGroupResources extends ResourceSupport {
     private String mobileNumber;
     private String postalCode;
     private String mailBox;
+
+    public String getPartyCode() {
+        return partyCode;
+    }
+
+    public void setPartyCode(String partyCode) {
+        this.partyCode = partyCode;
+    }
+
+    public String getPartyType() {
+        return partyType;
+    }
+
+    public void setPartyType(String partyType) {
+        this.partyType = partyType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    
 
     public Party getParty() {
         return party;
@@ -186,6 +216,9 @@ public class PartyGroupResources extends ResourceSupport {
     public PartyGroup toPartyGroup() {
         Party party = new Party();
         party.setPartyId(partyId);
+        party.setDescription(description);
+        party.setPartyCode(partyCode);
+        party.setPartyType(partyType);
 
         PartyGroup partyGroup = new PartyGroup();
         partyGroup.setPartyGroupId(partyGroupId);

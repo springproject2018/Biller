@@ -65,4 +65,14 @@ public class PartyDAOImpl implements PartyDAO {
 //        (Party) sessionFactory.getCurrentSession().get(Party.class, partyId);
     }
 
+    @Override
+    public Party createParty(Party party) {
+        int id = (int) sessionFactory.getCurrentSession().save(party);
+        
+        //sessionFactory.getCurrentSession().flush();
+        
+        party.setPartyId(id);
+        return party;
+    }
+
 }
